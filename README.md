@@ -9,3 +9,6 @@ Ji Young Seok
 Kim Tae Woo
 
 * add Main UI & Expense UI & Income UI by LSW 2016.10.29
+
+* add Search UI by LSW 2016.10.29 in 9-activity_search
+  and change color

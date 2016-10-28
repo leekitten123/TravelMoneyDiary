@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         new DatePickerDialog(MainActivity.this, dateSetListener, iYear, iMonth, iDate).show();      //dateoicker를 보여줌
     }
 
-    public void onClick_Page (View view) {
+    public void onClick_Page (View view) {  // 페이지 넘기는 온 클릭
 
         switch(view.getId()) {
             case R.id.BtnPageToWrite:
@@ -100,7 +100,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentToWrite);
                 break;
             case R.id.BtnPageToSearch :
-
+                Intent intentToSearch = new Intent(getApplicationContext(), SearchActivity.class) ;
+                startActivity(intentToSearch);
                 break;
         }
     }

@@ -21,6 +21,7 @@
 
         <activity android:name=".ExpenseActivity"></activity>
         <activity android:name=".IncomeActivity"></activity>
+        <activity android:name=".SearchActivity"></activity>
     </application>
 
 </manifest>
