@@ -126,12 +126,16 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:id="@+id/BtnPageToWrite"
+            android:onClick="onClick_Page"
             android:layout_weight="1"
             android:text="Write"/>
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:id="@+id/BtnPageToSearch"
+            android:onClick="onClick_Page"
             android:layout_weight="1"
             android:text="Search"/>
 

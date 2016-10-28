@@ -1,6 +1,7 @@
 package com.example.hyojin.travelmoneydiary;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
@@ -89,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         new DatePickerDialog(MainActivity.this, dateSetListener, iYear, iMonth, iDate).show();      //dateoicker를 보여줌
+    }
+
+    public void onClick_Page (View view) {
+
+        switch(view.getId()) {
+            case R.id.BtnPageToWrite:
+                Intent intentToWrite = new Intent(getApplicationContext(), ExpenseActivity.class) ;
+                startActivity(intentToWrite);
+                break;
+            case R.id.BtnPageToSearch :
+
+                break;
+        }
     }
 }
 
