@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class ExpenseActivity extends AppCompatActivity {
+public class IncomeActivity extends AppCompatActivity {
 
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
@@ -17,7 +17,7 @@ public class ExpenseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expense);
+        setContentView(R.layout.activity_income);
 
         ButtonExpense = (Button) findViewById(R.id.button_Expense);
         ButtonIncome = (Button) findViewById(R.id.button_Income);
@@ -30,9 +30,9 @@ public class ExpenseActivity extends AppCompatActivity {
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
     }
 
-    public void onClick_Income (View v) {
-        Intent intent_Income = new Intent (getApplicationContext(), IncomeActivity.class);
-        startActivity (intent_Income);
+    public void onClick_Expense (View v) {
+        Intent intent_Expense = new Intent (getApplicationContext(), ExpenseActivity.class);
+        startActivity (intent_Expense);
         finish();
     }
 }
