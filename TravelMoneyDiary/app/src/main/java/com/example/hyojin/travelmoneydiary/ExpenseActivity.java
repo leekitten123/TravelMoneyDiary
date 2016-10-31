@@ -83,19 +83,19 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_expense);      //activity_expense? activity_main?
+        setContentView(R.layout.activity_expense);      //activity_expense
 
-        edittext1 = (EditText) findViewById(R.id.editText1);
-        edittext2 = (EditText) findViewById(R.id.editText2);
-        edittext3 = (EditText) findViewById(R.id.editText3);
+        edittext1 = (EditText)findViewById(R.id.editText1);
+        edittext2 = (EditText)findViewById(R.id.editText2);
+        edittext3 = (EditText)findViewById(R.id.editText3);
 
-        cost = (TextView) findViewById(R.id.cost);
-        date = (TextView) findViewById(R.id.date);
-        content = (TextView) findViewById(R.id.content);
+        cost = (TextView)findViewById(R.id.cost);
+        date = (TextView)findViewById(R.id.date);
+        content = (TextView)findViewById(R.id.content);
 
-        btn1 = (Button) findViewById(R.id.button1);
-        btn2 = (Button) findViewById(R.id.button2);
-        btn3 = (Button) findViewById(R.id.button3);
+        btn1 = (Button)findViewById(R.id.button1);
+        btn2 = (Button)findViewById(R.id.button2);
+        btn3 = (Button)findViewById(R.id.button3);
 
         expense_db = new SQLDB(this);       //SQLDB 객체를 생성
 
@@ -143,8 +143,45 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "정보가 저장되었습니다.", Toast.LENGTH_LONG).show();  //토스트 이용하여 밑에 알림 띄우기.
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    public abstract class SQLDB extends SQLiteOpenHelper{
+        public SQLDB(Context context) {
+            super(context, "human", null, 1);
+        }
+        @Override
+        public void onCreate(SQLiteDataabase expense_db) {
+            db.execSQL("create table " + "(cost interger primary key, date interger primary key, address char(30))");
+        }
+        @Override
+        public void onUpgrade(SQLiteDatabase expense_db, int oldVersion, int newVersion) {
+            expense_db.execSQL("DROP TABLE IF EXISTS member");
+            onCreate(expense_db);
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+            // Handle action bar item clicks here. The action bar will
+            // automatically handle clicks on the Home/Up button, so long
+            // as you specify a parent activity in AndroidManifest.xml.
+            int id = item.getItemId();
+
+            //noinspection SimplifiableIfStatement
+            if (id == R.id.action_settings) {
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
 
 
+        }
     }
 }
 
