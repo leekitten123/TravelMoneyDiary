@@ -97,22 +97,22 @@ public class MainActivity extends AppCompatActivity {
         btn2 = (Button) findViewById(R.id.button2);
         btn3 = (Button) findViewById(R.id.button3);
 
-        expense_db = new SQLDB(this);
+        expense_db = new SQLDB(this);       //SQLDB 객체를 생성
 
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                sql = expense_db.getWritableDatabase();
-                expense_db.onUpgrade(sql, 1, 2);
-                sql.close();
+            public void onClick(View v) {               //expense_db 객체에 getWritableDatabase()메소드를 호출
+                sql = expense_db.getWritableDatabase(); //SQLiteDatabase 클래스에 반환. 개체 생성됨을 의미
+                expense_db.onUpgrade(sql, 1, 2);        //expense_db 객체에 onUpgrade() 메소드 호출, 테이블 초기화
+                sql.close();                            //sql 객체를 닫아 다른곳 에서 이용 가능 하도록.
             }
         });
 
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn2.setOnClickListener(new View.OnClickListener() {    //작동 안 될 확률 농후. 다시 손 봐야 될 듯.
             @Override
             public void onClick(View v) {
-                sql = expense_db.getReadableDatabase();
-                Cursor cursor;
+                sql = expense_db.getReadableDatabase();                 //읽을 수 있는 expense_db 객체 생성
+                Cursor cursor;                                          //Cursor 클래스 선언
                 cursor = sql.rawQuery("SELECT * FROM MEMBER;", null);
                 String cost2 = "금액" + "\r\n";
                 String date2 = "날짜" + "\r\n";
@@ -134,12 +134,13 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sql = expense_db.getWritableDatabase();
-                sql.execSQL("INSERT INTO member VALUES(" + edittext1.getText().toString() + ",'"
+                sql = expense_db.getWritableDatabase();             //쓸 수 있는 SQLiteDatabase 객체 생성
+                sql.execSQL("INSERT INTO member VALUES("            //sql 객체의 execSQL() 메소드를 통해 데이터를 추가
+                        + edittext1.getText().toString() + ",'"
                         + edittext2.getText().toString() + "','"
                         + edittext3.getText().toString() + "');");
                 sql.close();
-                Toast.makeText(getApplicationContext(), "정보가 저장되었습니다.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "정보가 저장되었습니다.", Toast.LENGTH_LONG).show();  //토스트 이용하여 밑에 알림 띄우기.
             }
         });
 
