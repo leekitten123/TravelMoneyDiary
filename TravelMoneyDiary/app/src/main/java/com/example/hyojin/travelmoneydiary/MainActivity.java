@@ -27,6 +27,11 @@ public class MainActivity extends AppCompatActivity {
     private static HttpURLConnection conn;
     private static String protocol = "GET";
 
+    static int Country = 0 ; // 어느나라인가? 0 = 미국, 1 = 일본, 2 = 유로, 3 = 중국
+
+    static String[] rate_1 = new String[12] ; // 환율 받아서 저장_1
+    static String[] rate_2 = new String[12] ; // 환율 받아서 저장_2
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +44,9 @@ public class MainActivity extends AppCompatActivity {
         iDate = today.get(Calendar.DAY_OF_MONTH);              //오늘의 일을 받아서 iDate에 저장
         TextView caltv = (TextView) findViewById(R.id.calendartv);   //xml에서 첫화면의 calendar부분의 객체를 받아옴
         caltv.setText(iYear + "년 " + iMonth + "월 " + iDate + "일");            //위 부분에 현재 년월일을 적음
+
         TextView eafter = (TextView) findViewById(R.id.exchangeafter);        //환율변동 후에 값을 적어놓음
 
-        SpannableString content = new SpannableString("                        ");//밑줄긋기위해 일단 빈칸으로채움 나중에 실제환율변동된값을 적을예정
-        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);          //밑줄생성
-        eafter.setText(content);            //밑줄그음
         //하나은행사이트에서 환율정보를 받아오는 부분
         new Thread() {
             public void run() {                      //어느버전 이상으로는 쓰레드를 사용해야지 웹에서 데이터를 받아올수 있어서 쓰레드를 사용한다
@@ -66,10 +69,19 @@ public class MainActivity extends AppCompatActivity {
         br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "MS949")); //MS949는 한글표현
 
         String line;
-        while ((line = br.readLine()) != null) {            //웹에서 소스보기를 통하여 원하는 부분의 데이터를 받아옴
-            if (line.startsWith("<td class='buy'>")) {
-                String webdata = line.replace("<td class='buy'>", "").replace("</td>", "");
-                Log.d("webdata", webdata);
+
+        int i = 0, j = 0 ;
+
+        while ((line = br.readLine()) != null) {//웹에서 소스보기를 통하여 원하는 부분의 데이터를 받아옴
+
+            if (line.startsWith("<td class='buy'>")) { // 환율 받기 1
+                rate_1[i] = line.replace("<td class='buy'>", "").replace("</td>", "");
+                i++ ;
+            }
+
+            if (line.startsWith("<td class='sell'>")) { // 환율 받기 2
+                rate_2[j] = line.replace("<td class='sell'>", "").replace("</td>", "") ;
+                j++ ;
             }
         }
     }
@@ -103,6 +115,32 @@ public class MainActivity extends AppCompatActivity {
                 Intent intentToSearch = new Intent(getApplicationContext(), SearchActivity.class) ;
                 startActivity(intentToSearch);
                 break;
+        }
+    }
+
+    public void onClick_Refresh (View v) {
+
+        TextView excahngeafter = (TextView) findViewById(R.id.exchangeafter) ;
+
+        Country = (int) (Math.random() * 3) ;
+
+        switch(Country) {
+
+            case 0: // 미국
+                excahngeafter.setText(rate_1[0]);
+                break;
+
+            case 1: // 일본
+                excahngeafter.setText(rate_1[1]);
+                break ;
+
+            case 2: // 유로
+                excahngeafter.setText(rate_1[2]);
+                break ;
+
+            case 3: // 중국
+                excahngeafter.setText(rate_1[3]);
+                break ;
         }
     }
 }
