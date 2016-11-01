@@ -1,4 +1,4 @@
-EVIEWBOARD_URL = 'http://reviews.cs.kookmin.ac.kr/'
+REVIEWBOARD_URL = 'http://reviews.cs.kookmin.ac.kr/'
 REPOSITORY = 'there-is-senior'
 STAMP_WHEN_POSTING = True
 
