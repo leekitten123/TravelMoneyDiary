@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +13,7 @@ import android.widget.Toast;
 
 public class ExpenseActivity extends AppCompatActivity {
 
-    DBManagerHandler Handler;
+    final DBManager dbManager = new DBManager(this, "Expense.db", null, 1);
 
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
@@ -22,8 +23,6 @@ public class ExpenseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
-
-        Handler = new DBManagerHandler(getApplicationContext());
 
         ButtonExpense = (Button) findViewById(R.id.button_Expense);
         ButtonIncome = (Button) findViewById(R.id.button_Income);
@@ -36,11 +35,9 @@ public class ExpenseActivity extends AppCompatActivity {
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
 
         ButtonSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Handler.insert (Integer.parseInt(EditTextDate.getText().toString()), EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
-                Handler.close();
-                Toast.makeText(getApplicationContext(), "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
+            public void onClick (View v) {
+                dbManager.insert(Integer.parseInt(EditTextDate.getText().toString()), EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                Log.i("저장", "성공");
             }
         });
     }
