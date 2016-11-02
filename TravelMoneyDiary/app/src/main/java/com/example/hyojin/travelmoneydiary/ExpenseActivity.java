@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class ExpenseActivity extends AppCompatActivity {
 
-    final DBManager dbManager = new DBManager(this, "Expense.db", null, 1);
+    final DBManager dbManager = new DBManager(this, "expense.db", null, 1);
 
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
