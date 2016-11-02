@@ -160,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, 2, 100, "엔화");
         menu.add(0, 3, 100, "유로");
         menu.add(0, 4, 100, "위안");
+            menu.add(0,5,100, "한화");
     }
 
         @Override
@@ -179,6 +180,8 @@ public class MainActivity extends AppCompatActivity {
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
                 return true;
+            case 5: // 한국돈
+                countrybtn.setBackgroundResource(R.drawable.krw);
         }
         return super.onContextItemSelected(item);
     }
