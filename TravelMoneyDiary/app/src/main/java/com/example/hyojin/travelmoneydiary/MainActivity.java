@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private static BufferedReader br;
     private static HttpURLConnection conn;
     private static String protocol = "GET";
-    static int Country = 0 ; // 어느나라인가? 0 = 미국, 1 = 일본, 2 = 유로, 3 = 중국
+    static int numCountry = 4 ; // 어느나라인가? 0 = 미국, 1 = 일본, 2 = 유로, 3 = 중국, 4 = 한국
 
 
     static String[] rate_1 = new String[12] ; // 환율 받아서 저장_1
@@ -128,9 +128,9 @@ public class MainActivity extends AppCompatActivity {
 
         TextView excahngeafter = (TextView) findViewById(R.id.exchangeafter) ;
 
-        Country = (int) (Math.random() * 3) ;
+        //numCountry = (int) (Math.random() * 3) ;
 
-        switch(Country) {
+        switch(numCountry) {
 
             case 0: // 미국
                 excahngeafter.setText(rate_1[0]);
@@ -147,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
             case 3: // 중국
                 excahngeafter.setText(rate_1[3]);
                 break ;
+            case 4 : //한국
+                excahngeafter.setText("1000");
+                break ;
         }
     }
 
@@ -160,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, 2, 100, "엔화");
         menu.add(0, 3, 100, "유로");
         menu.add(0, 4, 100, "위안");
-            menu.add(0,5,100, "한화");
+        menu.add(0, 5, 100, "한화");
     }
 
         @Override
@@ -170,18 +173,27 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case 1:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
+                numCountry = 0 ;
                 return true;
             case 2:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
+                numCountry = 1 ;
                 return true;
+
             case 3:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
+                numCountry = 2 ;
+
                 return true;
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
+                numCountry = 3 ;
+
                 return true;
             case 5: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
+                numCountry = 4 ;
+                return true;
         }
         return super.onContextItemSelected(item);
     }
