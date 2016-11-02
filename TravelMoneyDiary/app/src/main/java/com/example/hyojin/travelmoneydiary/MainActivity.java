@@ -29,10 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private static String protocol = "GET";
     static int numCountry = 4 ; // 어느나라인가? 0 = 미국, 1 = 일본, 2 = 유로, 3 = 중국, 4 = 한국
 
-
-    static String[] rate_1 = new String[12] ; // 환율 받아서 저장_1
-    static String[] rate_2 = new String[12] ; // 환율 받아서 저장_2
-
+    static float[] rate_1 = new float[12] ; // 환율 받아서 저장_1
+    static float[] rate_2 = new float[12] ; // 환율 받아서 저장_2
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
         }.start();      //쓰레드를시작한다
     }
 
-
     public void webdata() throws Exception {            //하나은행에서 환율정보를 받아오는 메서드
         Address = "http://fx.kebhana.com/fxportal/jsp/RS/DEPLOY_EXRATE/fxrate_all.html";        //자료를 받아올 주소
         url = new URL(Address);
@@ -73,24 +70,25 @@ public class MainActivity extends AppCompatActivity {
         conn.setRequestMethod(protocol);        //언어타입과 문자타입지정
         br = new BufferedReader(new InputStreamReader(conn.getInputStream(), "MS949")); //MS949는 한글표현
 
-        String line;
-
         int i = 0, j = 0 ;
 
-        while ((line = br.readLine()) != null) {//웹에서 소스보기를 통하여 원하는 부분의 데이터를 받아옴
+        String line ;
+        String tempLine ;
 
+        while ((line = br.readLine()) != null) {//웹에서 소스보기를 통하여 원하는 부분의 데이터를 받아옴
             if (line.startsWith("<td class='buy'>")) { // 환율 받기 1
-                rate_1[i] = line.replace("<td class='buy'>", "").replace("</td>", "");
+                tempLine = line.replace("<td class='buy'>", "").replace("</td>", "");
+                rate_1[i] = Float.parseFloat(tempLine) ;
                 i++ ;
             }
 
             if (line.startsWith("<td class='sell'>")) { // 환율 받기 2
-                rate_2[j] = line.replace("<td class='sell'>", "").replace("</td>", "") ;
+                tempLine = line.replace("<td class='sell'>", "").replace("</td>", "") ;
+                rate_2[j] = Float.parseFloat(tempLine) ;
                 j++ ;
             }
         }
     }
-
 
     public void clickcalendar(View view) {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() { //datepicker
@@ -101,21 +99,23 @@ public class MainActivity extends AppCompatActivity {
                 // TODO Auto-generated method stub
                 TextView caltv = (TextView) findViewById(R.id.calendartv);           // calendartv객체를 받아옴
                 caltv.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth + "일");           //선택한 년원일으로 caltv에 날짜를 적음
+
                 iYear = year;                 //이부분을 하지 않으면 클릭하여서 날짜를 바꾸면 그게 DatePickerDialog에 반영되지 않음
                 iMonth = monthOfYear;
                 iDate = dayOfMonth;
             }
         };
+
         new DatePickerDialog(MainActivity.this, dateSetListener, iYear, iMonth, iDate).show();      //dateoicker를 보여줌
     }
 
     public void onClick_Page (View view) {  // 페이지 넘기는 온 클릭
-
         switch(view.getId()) {
             case R.id.BtnPageToWrite:
                 Intent intentToWrite = new Intent(getApplicationContext(), ExpenseActivity.class) ;
                 startActivity(intentToWrite);
                 break;
+
             case R.id.BtnPageToSearch :
                 Intent intentToSearch = new Intent(getApplicationContext(), SearchActivity.class) ;
                 startActivity(intentToSearch);
@@ -123,41 +123,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
     public void onClick_Refresh (View v) {
-
+        TextView exchangebefore = (TextView) findViewById(R.id.exchangebefore) ;
         TextView excahngeafter = (TextView) findViewById(R.id.exchangeafter) ;
 
-        //numCountry = (int) (Math.random() * 3) ;
+        String[] currencyUnit = {"Dollar", "Yen", "Euro", "Yuan", "Won" } ;
 
-        switch(numCountry) {
-
-            case 0: // 미국
-                excahngeafter.setText(rate_1[0]);
-                break;
-
-            case 1: // 일본
-                excahngeafter.setText(rate_1[1]);
-                break ;
-
-            case 2: // 유로
-                excahngeafter.setText(rate_1[2]);
-                break ;
-
-            case 3: // 중국
-                excahngeafter.setText(rate_1[3]);
-                break ;
-            case 4 : //한국
-                excahngeafter.setText("1000");
-                break ;
-        }
+        exchangebefore.setText("1 " + currencyUnit[numCountry]);
+        excahngeafter.setText(String.valueOf(setMoneytoKorea(numCountry, 1)) + " Won");
     }
 
-        @Override
-        public void onCreateContextMenu (ContextMenu menu, View v,
-            ContextMenu.ContextMenuInfo menuInfo){
+    public void onCreateContextMenu (ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo){
         super.onCreateContextMenu(menu, v, menuInfo);
         // 컨텍스트 메뉴가 최초로 한번만 호출되는 콜백 메서드
+
         menu.setHeaderTitle("Choose Country");
         menu.add(0, 1, 100, "달러");
         menu.add(0, 2, 100, "엔화");
@@ -166,15 +145,16 @@ public class MainActivity extends AppCompatActivity {
         menu.add(0, 5, 100, "한화");
     }
 
-        @Override
-        public boolean onContextItemSelected (MenuItem item){
-            Button countrybtn = (Button)findViewById(R.id.chooseCountrybtn);
+    public boolean onContextItemSelected (MenuItem item){
+        Button countrybtn = (Button)findViewById(R.id.chooseCountrybtn);
         // 롱클릭했을 때 나오는 context Menu 의 항목을 선택(클릭) 했을 때 호출
+
         switch (item.getItemId()) {
             case 1:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
                 numCountry = 0 ;
                 return true;
+
             case 2:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
                 numCountry = 1 ;
@@ -183,26 +163,43 @@ public class MainActivity extends AppCompatActivity {
             case 3:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
                 numCountry = 2 ;
-
                 return true;
+
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
                 numCountry = 3 ;
-
                 return true;
+
             case 5: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
                 numCountry = 4 ;
                 return true;
         }
+
         return super.onContextItemSelected(item);
     }
 
     public void countryclick(View v){
 
-
     }
 
+    public float setMoneytoKorea (int numCounrty, int money) {
+
+        switch (numCountry) {
+            case 0:
+                return (money * rate_1[4]) ;
+            case 1:
+                return (money * rate_1[5]) ;
+            case 2:
+                return (money * rate_1[6]) ;
+            case 3:
+                return (money * rate_1[7]) ;
+            case 4:
+                return (money) ;
+        }
+
+        return 0 ;
+    }
 
 }
 
