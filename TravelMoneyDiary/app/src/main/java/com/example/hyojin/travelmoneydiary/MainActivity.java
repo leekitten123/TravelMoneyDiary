@@ -4,12 +4,13 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.text.SpannableString;
-import android.text.style.UnderlineSpan;
-import android.util.Log;
+import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -26,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
     private static BufferedReader br;
     private static HttpURLConnection conn;
     private static String protocol = "GET";
-
     static int Country = 0 ; // 어느나라인가? 0 = 미국, 1 = 일본, 2 = 유로, 3 = 중국
+
 
     static String[] rate_1 = new String[12] ; // 환율 받아서 저장_1
     static String[] rate_2 = new String[12] ; // 환율 받아서 저장_2
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +46,11 @@ public class MainActivity extends AppCompatActivity {
         iDate = today.get(Calendar.DAY_OF_MONTH);              //오늘의 일을 받아서 iDate에 저장
         TextView caltv = (TextView) findViewById(R.id.calendartv);   //xml에서 첫화면의 calendar부분의 객체를 받아옴
         caltv.setText(iYear + "년 " + iMonth + "월 " + iDate + "일");            //위 부분에 현재 년월일을 적음
-
+        Button countrybtn = (Button)findViewById(R.id.chooseCountrybtn);
         TextView eafter = (TextView) findViewById(R.id.exchangeafter);        //환율변동 후에 값을 적어놓음
+        registerForContextMenu(countrybtn);
+
+        countrybtn.setBackgroundResource(R.drawable.krw);
 
         //하나은행사이트에서 환율정보를 받아오는 부분
         new Thread() {
@@ -118,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     public void onClick_Refresh (View v) {
 
         TextView excahngeafter = (TextView) findViewById(R.id.exchangeafter) ;
@@ -143,5 +149,45 @@ public class MainActivity extends AppCompatActivity {
                 break ;
         }
     }
+
+        @Override
+        public void onCreateContextMenu (ContextMenu menu, View v,
+            ContextMenu.ContextMenuInfo menuInfo){
+        super.onCreateContextMenu(menu, v, menuInfo);
+        // 컨텍스트 메뉴가 최초로 한번만 호출되는 콜백 메서드
+        menu.setHeaderTitle("Choose Country");
+        menu.add(0, 1, 100, "달러");
+        menu.add(0, 2, 100, "엔화");
+        menu.add(0, 3, 100, "유로");
+        menu.add(0, 4, 100, "위안");
+    }
+
+        @Override
+        public boolean onContextItemSelected (MenuItem item){
+            Button countrybtn = (Button)findViewById(R.id.chooseCountrybtn);
+        // 롱클릭했을 때 나오는 context Menu 의 항목을 선택(클릭) 했을 때 호출
+        switch (item.getItemId()) {
+            case 1:// 달러
+                countrybtn.setBackgroundResource(R.drawable.dollor);
+                return true;
+            case 2:// 엔화
+                countrybtn.setBackgroundResource(R.drawable.jpy);
+                return true;
+            case 3:// 유로
+                countrybtn.setBackgroundResource(R.drawable.eur);
+                return true;
+            case 4:// 위안
+                countrybtn.setBackgroundResource(R.drawable.cny);
+                return true;
+        }
+        return super.onContextItemSelected(item);
+    }
+
+    public void countryclick(View v){
+
+
+    }
+
+
 }
 

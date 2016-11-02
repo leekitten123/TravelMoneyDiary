@@ -74,10 +74,11 @@
 
             <Button
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Refresh"
-                android:onClick="onClick_Refresh"/>
+                android:onClick="onClick_Refresh"
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -87,10 +88,15 @@
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_width="150dp"
+                android:layout_height="75dp"
                 android:layout_weight="1"
-                android:text="Choose Country"/>
+                android:id="@+id/chooseCountrybtn"
+                android:onClick="countryclick"
+
+
+
+                />
 
             <TextView
                 android:layout_height="wrap_content"
