@@ -16,17 +16,17 @@ public class DBManager extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase db) {
         // 새로운 Table 생성
-        db.execSQL("CREATE TABLE expense (_id INTEGER PRIMARY KEY AUTOINCREMENT, date INTEGER , content TEXT , price INTEGER);");
+        db.execSQL("CREATE TABLE database(_id INTEGER PRIMARY KEY AUTOINCREMENT, date INTEGER , content TEXT , price INTEGER);");
     }
 
-    // Database 업그레이드를 위해 버전이 변경될 떄 호출되는 함수
+    // Database 업그레이드를 위해 버전이 변경될 때 호출되는 함수
     @Override
     public void onUpgrade (SQLiteDatabase db, int oldVersion, int newVersion) {
     }
 
     public void insert (int date, String content, int price) {
         SQLiteDatabase db = getWritableDatabase();
-        db.execSQL("INSERT INTO expense VALUES(NULL, " + date + ", '" + content + "', " + price + ");");
+        db.execSQL("INSERT INTO database VALUES(NULL, " + date + ", '" + content + "', " + price + ");");
         db.close();
     }
 
@@ -34,7 +34,7 @@ public class DBManager extends SQLiteOpenHelper {
         SQLiteDatabase db = getReadableDatabase();
         String result = "";
 
-        Cursor cursor = db.rawQuery("SELECT * FROM expense", null);
+        Cursor cursor = db.rawQuery("SELECT * FROM database", null);
         while (cursor.moveToNext()) {
             result += cursor.getInt(0) + cursor.getString(1) + cursor.getInt(2);
         }
