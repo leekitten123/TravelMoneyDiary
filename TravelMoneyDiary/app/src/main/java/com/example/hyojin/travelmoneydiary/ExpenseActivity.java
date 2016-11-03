@@ -1,15 +1,20 @@
 package com.example.hyojin.travelmoneydiary;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class ExpenseActivity extends AppCompatActivity {
-    // 지출 화면
+
+    final DBManager dbManager = new DBManager(this, "expense.db", null, 1);
+
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
     TextView TextViewPrice;
@@ -28,6 +33,17 @@ public class ExpenseActivity extends AppCompatActivity {
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
 
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
+
+        ButtonSave.setOnClickListener(new View.OnClickListener() {
+            public void onClick (View v) {
+                dbManager.insert(Integer.parseInt(EditTextDate.getText().toString()), EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                Log.i("저장", "성공");
+                Toast.makeText(ExpenseActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
+
+                // add clear method when click save button
+                clear();
+            }
+        });
     }
 
     public void onClick_Income (View v) {
@@ -35,5 +51,18 @@ public class ExpenseActivity extends AppCompatActivity {
         startActivity (intent_Income);
         finish();
     }
+
+    void clear() {
+        EditTextDate.setText("");
+        EditTextContent.setText("");
+        EditTextPrice.setText("");
+    }
 }
+
+
+
+
+
+
+
 
