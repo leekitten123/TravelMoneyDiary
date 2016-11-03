@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class IncomeActivity extends AppCompatActivity {
-
+    // 수입 화면
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
     TextView TextViewPrice;
