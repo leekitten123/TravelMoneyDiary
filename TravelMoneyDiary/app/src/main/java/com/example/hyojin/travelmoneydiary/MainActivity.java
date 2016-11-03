@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public float setMoneytoKorea (int numCounrty, int money) {
-
+        // 환율로 한화로 얼만지 계산
         switch (numCountry) {
             case 0:
                 return (money * rate_1[4]) ;
