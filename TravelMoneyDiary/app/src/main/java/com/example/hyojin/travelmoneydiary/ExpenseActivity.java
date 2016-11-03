@@ -39,6 +39,8 @@ public class ExpenseActivity extends AppCompatActivity {
                 dbManager.insert(Integer.parseInt(EditTextDate.getText().toString()), EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
                 Log.i("저장", "성공");
                 Toast.makeText(ExpenseActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
+
+                clear();
             }
         });
     }
@@ -47,6 +49,12 @@ public class ExpenseActivity extends AppCompatActivity {
         Intent intent_Income = new Intent (getApplicationContext(), IncomeActivity.class);
         startActivity (intent_Income);
         finish();
+    }
+
+    void clear() {
+        EditTextDate.setText("");
+        EditTextContent.setText("");
+        EditTextPrice.setText("");
     }
 }
 
