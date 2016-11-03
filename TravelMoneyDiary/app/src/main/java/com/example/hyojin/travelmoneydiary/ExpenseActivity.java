@@ -40,11 +40,13 @@ public class ExpenseActivity extends AppCompatActivity {
                 Log.i("저장", "성공");
                 Toast.makeText(ExpenseActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
 
+                // add clear method when click save button
                 clear();
             }
         });
     }
 
+    // implement clear method
     public void onClick_Income (View v) {
         Intent intent_Income = new Intent (getApplicationContext(), IncomeActivity.class);
         startActivity (intent_Income);
