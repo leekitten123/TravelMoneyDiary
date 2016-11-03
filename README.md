@@ -12,3 +12,5 @@ Kim Tae Woo
 
 * add Search UI by LSW 2016.10.29 in 9-activity_search
   and change color
+
+* add Refresh Button by LSW 2016.10.31 in 6-exchange-rate
