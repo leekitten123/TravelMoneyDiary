@@ -16,7 +16,7 @@ public class DBManager extends SQLiteOpenHelper {
     @Override
     public void onCreate (SQLiteDatabase db) {
         // 새로운 Table 생성
-        db.execSQL("CREATE TABLE database(_id INTEGER PRIMARY KEY AUTOINCREMENT, date INTEGER , content TEXT , price INTEGER);");
+        db.execSQL("CREATE TABLE database (_id INTEGER PRIMARY KEY AUTOINCREMENT, date INTEGER , content TEXT , price INTEGER);");
     }
 
     // Database 업그레이드를 위해 버전이 변경될 때 호출되는 함수
