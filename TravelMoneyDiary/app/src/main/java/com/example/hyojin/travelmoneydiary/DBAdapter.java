@@ -49,7 +49,8 @@ public class DBAdapter extends BaseAdapter {
 
         UsageList usageList = ul.get(position);
 
-        tv1.setText(Integer.toString(usageList.date));
+        String date1 = Integer.toString(usageList.date);
+        tv1.setText(date1.substring(0,4) + "년 " + date1.substring(4,6) + "월 " + date1.substring(6) + "일");
         tv2.setText(usageList.content);
         tv3.setText(Integer.toString(usageList.price) + " 원");
 
