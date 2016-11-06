@@ -86,12 +86,11 @@
         android:gravity="center"
         android:layout_weight="2">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="수입 내역"
-            android:textSize="10mm"
-            android:textColor="#FFFFFF"/>
+        <ListView
+            android:id="@+id/incomeListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </ListView>
 
     </LinearLayout>
 </LinearLayout>
