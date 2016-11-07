@@ -1,10 +1,10 @@
 package com.example.hyojin.travelmoneydiary;
 
-
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +22,8 @@ public class SearchActivity  extends AppCompatActivity {
     Button ButtonSearch;
     ListView ExpenseListView, IncomeListView;
 
+    EditText StartDay, EndDay;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,17 +34,26 @@ public class SearchActivity  extends AppCompatActivity {
         ExpenseListView = (ListView) findViewById(R.id.expenseListView);
         IncomeListView = (ListView) findViewById(R.id.incomeListView);
 
+        StartDay = (EditText) findViewById(R.id.editText_StartDay);
+        EndDay = (EditText) findViewById(R.id.editText_EndDay);
+
         ButtonSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
-                dbManager_expense.getResult(ul_expense);
-                adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
-                ExpenseListView.setAdapter(adapter_expense);
+                if (Integer.parseInt(StartDay.getText().toString()) > Integer.parseInt(EndDay.getText().toString())) {
+                  Toast.makeText(SearchActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
+                } else {
+                    ul_expense.clear();
+                    dbManager_expense.getResult(ul_expense, Integer.parseInt(StartDay.getText().toString()), Integer.parseInt(EndDay.getText().toString()));
+                    adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
+                    ExpenseListView.setAdapter(adapter_expense);
 
-                dbManager_income.getResult(ul_income);
-                adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
-                IncomeListView.setAdapter(adapter_income);
+                    ul_income.clear();
+                    dbManager_income.getResult(ul_income, Integer.parseInt(StartDay.getText().toString()), Integer.parseInt(EndDay.getText().toString()));
+                    adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
+                    IncomeListView.setAdapter(adapter_income);
 
-                Toast.makeText(SearchActivity.this, "조회 완료", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SearchActivity.this, "조회 완료", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
