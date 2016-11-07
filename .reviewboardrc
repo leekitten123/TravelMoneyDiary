@@ -1,9 +1,3 @@
 REVIEWBOARD_URL = 'http://reviews.cs.kookmin.ac.kr/'
 REPOSITORY = 'there-is-senior'
-<<<<<<< HEAD
-STAMP_WHEN_POSTING = False
-
-
-=======
 STAMP_WHEN_POSTING = True
->>>>>>> 87d1d233e07f844cec6ff3224f259f36ca43b490
