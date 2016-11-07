@@ -1,12 +1,20 @@
 package com.example.hyojin.travelmoneydiary;
 
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
@@ -20,6 +28,12 @@ public class SearchActivity  extends AppCompatActivity {
     Button ButtonSearch;
     ListView ExpenseListView;
 
+    private PieChart expense_Chart ;
+    private float[] yData = { 5, 10, 15, 30, 40 };
+    private String[] xData = { "Sony", "Huawei", "LG", "Apple", "Samsung" };
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +42,16 @@ public class SearchActivity  extends AppCompatActivity {
         ButtonSearch = (Button) findViewById(R.id.button_Search);
 
         ExpenseListView = (ListView) findViewById(R.id.expenseListView);
+
+        expense_Chart = (PieChart) findViewById(R.id.expense_Chart);
+        // configure pie chart
+        expense_Chart.setUsePercentValues(true); // ???
+        expense_Chart.setDescription("Expense Chart"); // 우측 하단의 제목
+        // enable rotation of the chart by touch
+        expense_Chart.setRotationAngle(0);
+        expense_Chart.setRotationEnabled(true); // 터치해서 돌리기 가능
+        // add data
+        addData();
 
         ButtonSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
@@ -38,5 +62,60 @@ public class SearchActivity  extends AppCompatActivity {
                 Toast.makeText(SearchActivity.this, "조회 완료", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void addData() {
+        ArrayList<Entry> yVals1 = new ArrayList<Entry>();
+
+
+        //yvlas에 ydata 추가
+        for (int i = 0; i < yData.length; i++)
+            yVals1.add(new Entry(yData[i], i));
+
+        
+        ArrayList<String> xVals = new ArrayList<String>();
+
+        for (int i = 0; i < xData.length; i++)
+            xVals.add(xData[i]);
+
+        // create pie data set
+        PieDataSet dataSet = new PieDataSet(yVals1, "Market Share");
+        dataSet.setSliceSpace(3);
+        dataSet.setSelectionShift(5);
+
+        // add many colors
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.JOYFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.COLORFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.LIBERTY_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.PASTEL_COLORS)
+            colors.add(c);
+
+        colors.add(ColorTemplate.getHoloBlue());
+        dataSet.setColors(colors);
+
+        // instantiate pie data object now
+        PieData data = new PieData(xVals, dataSet);
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextSize(11f);
+        data.setValueTextColor(Color.GRAY);
+
+        expense_Chart.setData(data);
+
+        // undo all highlights
+        expense_Chart.highlightValues(null);
+
+        // update pie chart
+        expense_Chart.invalidate();
     }
 }
