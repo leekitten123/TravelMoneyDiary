@@ -44,16 +44,37 @@ public class ExpenseActivity extends AppCompatActivity {
         ButtonExpense = (Button) findViewById(R.id.button_Expense);
         ButtonIncome = (Button) findViewById(R.id.button_Income);
         ButtonSave = (Button) findViewById(R.id.button_Save);
+        ///// 수정하는부분
+        TextView etexpensedate = (TextView) findViewById(R.id.expensedate);
+/////
+        String temp = etexpensedate.getText().toString();
+        //SimpleDateFormat yearfm = new SimpleDateFormat("yyyy");
 
+//        String stryear = new SimpleDateFormat("yyyy").format(temp);
+ //       String strmonth = new SimpleDateFormat("MM").format(temp);
+  //      String strday = new SimpleDateFormat("dd").format(temp);
 
+        //String stryear = yearfm.format(temp);
+        //SimpleDateFormat monthfm = new SimpleDateFormat("MM");
+        //String strmonth = monthfm.format(temp);
+        //SimpleDateFormat datefm = new SimpleDateFormat("dd");
+        //String strday = datefm.format(temp);
+       // int intyear = Integer.parseInt(stryear);
+        //int intmonth = Integer.parseInt(strmonth);
+        //int intday = Integer.parseInt(strday);
+
+        //final int dateint = intyear*10000+intmonth*100+intday;
+            final int dateint = iYear*10000+(iMonth+1)*100+iDate;
+///////
         EditTextContent = (EditText) findViewById(R.id.editText_Content);
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
 
-        TextViewPrice = (TextView) findViewById(R.id.textView_Price);
 
+        TextViewPrice = (TextView) findViewById(R.id.textView_Price);
+//////////////////////여아래 etexpensedate 이거수정하기원래대로 원래 EditTextPrice엿을듯etexpensedate.getText().toString()
         ButtonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
-                dbManager.insert(Integer.parseInt(EditTextDate.getText().toString()), EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                dbManager.insert(dateint, EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
                 Log.i("저장", "성공");
                 Toast.makeText(ExpenseActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
 
@@ -70,7 +91,7 @@ public class ExpenseActivity extends AppCompatActivity {
     }
 
     void clear() {
-        EditTextDate.setText("");
+    //    EditTextDate.setText("");
         EditTextContent.setText("");
         EditTextPrice.setText("");
     }
