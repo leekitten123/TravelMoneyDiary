@@ -52,12 +52,15 @@
                 android:textColor="#FFFFFF"
                 android:text=" 날짜 : "/>
 
-            <EditText
-                android:id="@+id/editText_Date"
+            <TextView
+                android:id="@+id/incomedate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:enabled="true"
-                android:inputType="number" />
+                android:text=""
+                android:onClick="clickincomedate"
+
+
+                />
         </LinearLayout>
 
         <LinearLayout
@@ -87,12 +90,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/textView3"
+            <Button
+                android:id="@+id/incomeCountry"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textSize="25sp"
                 android:textColor="#FFFFFF"
+                android:onClick="clickincomecountry"
                 android:text=" 국가 : "/>
 
             <EditText
