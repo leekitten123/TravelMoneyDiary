@@ -26,8 +26,11 @@ public class SearchActivity  extends AppCompatActivity {
 
     EditText StartDay, EndDay;
 
-    String[] xData ;
-    float[] yData ;
+    String[] xData_Expense ;
+    float[] yData_Expense ;
+
+    String[] xData_Income ;
+    float[] yData_Income ;
 
     PieChart expense_Chart ;
     MyPieChart expense_MyPieChart;
@@ -71,28 +74,38 @@ public class SearchActivity  extends AppCompatActivity {
                     Toast.makeText(SearchActivity.this, "조회 완료", Toast.LENGTH_SHORT).show();
                 }
 
-                getXYData(ul_expense) ;
+                xData_Expense = getXData(ul_expense);
+                yData_Expense = getYData(ul_expense) ;
                 expense_MyPieChart.setChartName("Expense Chart");
-                expense_MyPieChart.setXYData(xData, yData);
+                expense_MyPieChart.setXYData(xData_Expense, yData_Expense);
                 expense_MyPieChart.addData();
 
-                getXYData(ul_income) ;
-                expense_MyPieChart.setChartName("Income Chart");
-                expense_MyPieChart.setXYData(xData, yData);
-                expense_MyPieChart.addData();
+                xData_Income = getXData(ul_income);
+                yData_Income = getYData(ul_income) ;
+                income_MyPieChart.setChartName("Income Chart");
+                income_MyPieChart.setXYData(xData_Income, yData_Income);
+                income_MyPieChart.addData();
             }
         });
     }
 
-    void getXYData(ArrayList<UsageList> ul) {
+    String[] getXData(ArrayList<UsageList> ul) {
+        String[] xData = new String[ul.size()];
 
-        xData = new String[ul.size()] ;
-        yData = new float[ul.size()] ;
-
-        for (int i = 0 ; i <ul.size() ; i++) {
+        for (int i = 0; i < ul.size(); i++) {
             xData[i] = ul.get(i).content;
+        }
+
+        return xData ;
+    }
+    
+    float[] getYData(ArrayList<UsageList> ul) {
+        float[] yData = new float[ul.size()];
+
+        for (int i = 0; i < ul.size(); i++) {
             yData[i] = ul.get(i).price;
         }
 
+        return yData ;
     }
 }
