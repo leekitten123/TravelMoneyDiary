@@ -48,22 +48,7 @@ public class ExpenseActivity extends AppCompatActivity {
         TextView etexpensedate = (TextView) findViewById(R.id.expensedate);
 /////
         String temp = etexpensedate.getText().toString();
-        //SimpleDateFormat yearfm = new SimpleDateFormat("yyyy");
 
-//        String stryear = new SimpleDateFormat("yyyy").format(temp);
- //       String strmonth = new SimpleDateFormat("MM").format(temp);
-  //      String strday = new SimpleDateFormat("dd").format(temp);
-
-        //String stryear = yearfm.format(temp);
-        //SimpleDateFormat monthfm = new SimpleDateFormat("MM");
-        //String strmonth = monthfm.format(temp);
-        //SimpleDateFormat datefm = new SimpleDateFormat("dd");
-        //String strday = datefm.format(temp);
-       // int intyear = Integer.parseInt(stryear);
-        //int intmonth = Integer.parseInt(strmonth);
-        //int intday = Integer.parseInt(strday);
-
-        //final int dateint = intyear*10000+intmonth*100+intday;
             final int dateint = iYear*10000+(iMonth+1)*100+iDate;
 ///////
         EditTextContent = (EditText) findViewById(R.id.editText_Content);

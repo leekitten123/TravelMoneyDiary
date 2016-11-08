@@ -46,7 +46,11 @@ public class IncomeActivity extends AppCompatActivity {
         ButtonExpense = (Button) findViewById(R.id.button_Expense);
         ButtonIncome = (Button) findViewById(R.id.button_Income);
         ButtonSave = (Button) findViewById(R.id.button_Save);
+        TextView imcomedate = (TextView) findViewById(R.id.incomedate);
 
+        String temp = imcomedate.getText().toString();
+
+        final int dateint = iYear*10000+(iMonth+1)*100+iDate;
 
         EditTextContent = (EditText) findViewById(R.id.editText_Content);
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
@@ -55,7 +59,7 @@ public class IncomeActivity extends AppCompatActivity {
 
         ButtonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
-                dbManager.insert(Integer.parseInt(EditTextDate.getText().toString()), EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                dbManager.insert(dateint, EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
                 Log.i("저장", "성공");
                 Toast.makeText(IncomeActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
                 clear();
@@ -70,7 +74,7 @@ public class IncomeActivity extends AppCompatActivity {
     }
 
     void clear() {
-        EditTextDate.setText("");
+
         EditTextContent.setText("");
         EditTextPrice.setText("");
     }
