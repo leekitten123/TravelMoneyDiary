@@ -33,6 +33,11 @@ public class MainActivity extends AppCompatActivity {
     static float[] rate_1 = new float[12] ; // 환율 받아서 저장_1
     static float[] rate_2 = new float[12] ; // 환율 받아서 저장_2
 
+    DBManager dbManager_expense = new DBManager(this, "expense.db", null, 1);
+    DBManager dbManager_income = new DBManager(this, "income.db", null, 1);
+
+    TextView TodayIncome, TodayExpense;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +67,14 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }.start();      //쓰레드를시작한다
+
+        TodayIncome = (TextView) findViewById(R.id.todayIncome);
+        TodayExpense = (TextView) findViewById(R.id.todayExpense);
+        int todayIncome = dbManager_income.todayTotal(iYear*10000 + (iMonth+1)*100 + iDate);
+        int todayExpense = dbManager_expense.todayTotal(iYear*10000 + (iMonth+1)*100 + iDate);
+
+        TodayIncome.setText(Integer.toString(todayIncome) + "원");
+        TodayExpense.setText(Integer.toString(todayExpense) + "원");
     }
 
     public void webdata() throws Exception {            //하나은행에서 환율정보를 받아오는 메서드
