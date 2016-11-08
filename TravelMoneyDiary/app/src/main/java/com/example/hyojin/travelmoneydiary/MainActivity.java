@@ -118,6 +118,12 @@ public class MainActivity extends AppCompatActivity {
                 iYear = year;                 //이부분을 하지 않으면 클릭하여서 날짜를 바꾸면 그게 DatePickerDialog에 반영되지 않음
                 iMonth = monthOfYear-1;
                 iDate = dayOfMonth;
+
+                int todayIncome = dbManager_income.todayTotal(iYear*10000 + (iMonth+1)*100 + iDate);
+                int todayExpense = dbManager_expense.todayTotal(iYear*10000 + (iMonth+1)*100 + iDate);
+
+                TodayIncome.setText(Integer.toString(todayIncome) + "원");
+                TodayExpense.setText(Integer.toString(todayExpense) + "원");
             }
         };
 
