@@ -80,13 +80,10 @@
         android:gravity="center"
         android:layout_weight="2">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="수입 그래프"
-            android:textSize="10mm"
-            android:textColor="#FFFFFF"/>
-
+        <com.github.mikephil.charting.charts.PieChart
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/income_Chart"/>
     </LinearLayout>
 
     <LinearLayout
