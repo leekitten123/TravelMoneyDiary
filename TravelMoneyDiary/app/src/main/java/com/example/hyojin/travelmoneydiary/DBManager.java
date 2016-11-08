@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -33,7 +34,7 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public void getResult (ArrayList<UsageList> ul) {
+    public void getResult (ArrayList<UsageList> ul, int startDay, int endDay) {
         SQLiteDatabase db = getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT * FROM database", null);
 
@@ -45,11 +46,14 @@ public class DBManager extends SQLiteOpenHelper {
             Log.i ("SQL ", "select : " + "(date:" + date + ")(content:" + content + ")(price:" + price + ")");
 
             UsageList usageList = new UsageList();
-            usageList.date = date;
-            usageList.content = content;
-            usageList.price = price;
 
-            ul.add(usageList);
+            if (date >= startDay && date <= endDay) {
+                usageList.date = date;
+                usageList.content = content;
+                usageList.price = price;
+
+                ul.add(usageList);
+            }
         }
     }
 }
