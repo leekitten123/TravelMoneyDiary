@@ -1,9 +1,13 @@
-﻿package com.example.hyojin.travelmoneydiary;
+package com.example.hyojin.travelmoneydiary;
 
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class DBManager extends SQLiteOpenHelper {
 
@@ -30,15 +34,26 @@ public class DBManager extends SQLiteOpenHelper {
         db.close();
     }
 
-    public String getResult () {
+    public void getResult (ArrayList<UsageList> ul, int startDay, int endDay) {
         SQLiteDatabase db = getReadableDatabase();
-        String result = "";
-
         Cursor cursor = db.rawQuery("SELECT * FROM database", null);
-        while (cursor.moveToNext()) {
-            result += cursor.getInt(0) + cursor.getString(1) + cursor.getInt(2);
-        }
 
-        return result;
+        while (cursor.moveToNext()) {
+            int date = cursor.getInt(cursor.getColumnIndex("date"));
+            String content = cursor.getString(cursor.getColumnIndex("content"));
+            int price = cursor.getInt(cursor.getColumnIndex("price"));
+
+            Log.i ("SQL ", "select : " + "(date:" + date + ")(content:" + content + ")(price:" + price + ")");
+
+            UsageList usageList = new UsageList();
+
+            if (date >= startDay && date <= endDay) {
+                usageList.date = date;
+                usageList.content = content;
+                usageList.price = price;
+
+                ul.add(usageList);
+            }
+        }
     }
 }

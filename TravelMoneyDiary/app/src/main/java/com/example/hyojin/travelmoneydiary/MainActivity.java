@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -28,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     private static HttpURLConnection conn;
     private static String protocol = "GET";
     static int numCountry = 4 ; // 어느나라인가? 0 = 미국, 1 = 일본, 2 = 유로, 3 = 중국, 4 = 한국
-
+    private long lastTimeBackPressed;
     static float[] rate_1 = new float[12] ; // 환율 받아서 저장_1
     static float[] rate_2 = new float[12] ; // 환율 받아서 저장_2
 
@@ -47,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Button countrybtn = (Button)findViewById(R.id.chooseCountrybtn);
         TextView eafter = (TextView) findViewById(R.id.exchangeafter);        //환율변동 후에 값을 적어놓음
         registerForContextMenu(countrybtn);
-
+        iMonth-=1;
         countrybtn.setBackgroundResource(R.drawable.krw);
 
         //하나은행사이트에서 환율정보를 받아오는 부분
@@ -97,11 +98,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 // TODO Auto-generated method stub
+                monthOfYear+=1;
                 TextView caltv = (TextView) findViewById(R.id.calendartv);           // calendartv객체를 받아옴
                 caltv.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth + "일");           //선택한 년원일으로 caltv에 날짜를 적음
 
                 iYear = year;                 //이부분을 하지 않으면 클릭하여서 날짜를 바꾸면 그게 DatePickerDialog에 반영되지 않음
-                iMonth = monthOfYear;
+                iMonth = monthOfYear-1;
                 iDate = dayOfMonth;
             }
         };
@@ -199,6 +201,15 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return 0 ;
+    }
+
+    public void onBackPressed(){
+        if(System.currentTimeMillis()-lastTimeBackPressed<1500){
+            finish();
+            return;
+        }
+        Toast.makeText(MainActivity.this,"'뒤로' 버튼을 한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
+        lastTimeBackPressed=System.currentTimeMillis();
     }
 
 }
