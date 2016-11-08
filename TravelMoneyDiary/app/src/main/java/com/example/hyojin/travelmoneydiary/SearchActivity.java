@@ -75,28 +75,34 @@ public class SearchActivity  extends AppCompatActivity {
         iMonthe = today.get(Calendar.MONTH) + 1;                //오늘의 달을 받아서 iMonth 저장 달은 0~11이므로 1을더함
         iDatee = today.get(Calendar.DAY_OF_MONTH);              //오늘의 일을 받아서 iDate에 저장
 
-        final int dateints = iYears*10000+(iMonths)*100+iDates;
-        final int dateinte = iYeare*10000+(iMonthe)*100+iDatee;
+
         TextView tvstart = (TextView) findViewById(R.id.editText_StartDay);   //xml에서 첫화면의 calendar부분의 객체를 받아옴
         TextView tvend = (TextView) findViewById(R.id.editText_EndDay);   //xml에서 첫화면의 calendar부분의 객체를 받아옴
         tvstart.setText(iYears + "년 " + iMonths + "월 " + iDates + "일");
         tvend.setText(iYeare + "년 " + iMonthe + "월 " + iDatee + "일");
-        iMonths-=1;
-        iMonthe-=1;
+
+
+        final int dateints = iYears*10000+(iMonths)*100+iDates;
+        final int dateinte = iYeare*10000+(iMonthe)*100+iDatee;
+
+       // Log.i("date",String.valueOf(dateints));
+       // Log.i("date",String.valueOf(dateinte));
 
         ButtonSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
+                final int dateints = iYears*10000+(iMonths)*100+iDates;
+                final int dateinte = iYeare*10000+(iMonthe)*100+iDatee;
                 if (dateints > dateinte) {
                     Toast.makeText(SearchActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     ul_expense.clear();
 
-                    dbManager_expense.getResult(ul_expense, dateints, dateinte);
+                    dbManager_expense.getResult(ul_expense,dateints,dateinte);
                     adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
                     ExpenseListView.setAdapter(adapter_expense);
 
                     ul_income.clear();
-                    dbManager_income.getResult(ul_income, dateints, dateinte);
+                    dbManager_income.getResult(ul_income, dateints,dateinte);
                     adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
                     IncomeListView.setAdapter(adapter_income);
 
@@ -152,6 +158,7 @@ public class SearchActivity  extends AppCompatActivity {
                 iYears = year;                 //이부분을 하지 않으면 클릭하여서 날짜를 바꾸면 그게 DatePickerDialog에 반영되지 않음
                 iMonths = monthOfYear-1;
                 iDates = dayOfMonth;
+
             }
         };
 
