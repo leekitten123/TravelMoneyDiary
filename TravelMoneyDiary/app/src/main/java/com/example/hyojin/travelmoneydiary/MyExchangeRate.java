@@ -65,21 +65,11 @@ public class MyExchangeRate {
         setBeforeMoney(editText);
 
         switch (numCountry) {
-            case 0:
-                afterMoney = beforeMoney * (int)exchangeRate[4] ;
-                break;
-            case 1:
-                afterMoney = beforeMoney * (int)exchangeRate[5] / 100 ;
-                break ;
-            case 2:
-                afterMoney = beforeMoney * (int)exchangeRate[6] ;
-                break ;
-            case 3:
-                afterMoney = beforeMoney * (int)exchangeRate[7] ;
-                break ;
-            case 4:
-                afterMoney = beforeMoney ;
-                break ;
+            case 0: afterMoney = beforeMoney * (int)exchangeRate[4] ; break;
+            case 1: afterMoney = beforeMoney * (int)exchangeRate[5] / 100 ; break ;
+            case 2: afterMoney = beforeMoney * (int)exchangeRate[6] ; break ;
+            case 3: afterMoney = beforeMoney * (int)exchangeRate[7] ; break ;
+            case 4: afterMoney = beforeMoney ; break ;
         }
 
         textView.setText(Integer.toString(afterMoney));
