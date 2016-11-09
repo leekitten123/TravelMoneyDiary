@@ -36,7 +36,7 @@ public class MyPieChart {
             xVals.add(xData[i]);
 
         // create pie data set
-        PieDataSet dataSet = new PieDataSet(yVals1, "kk"); // 우측 최하단에 스트링 출력
+        PieDataSet dataSet = new PieDataSet(yVals1, "List"); // 우측 최하단에 스트링 출력
         dataSet.setSliceSpace(3); // 숫자가 크면 원 그래프에서 데이터간의 간격 증가
         dataSet.setSelectionShift(5); // 숫자가 크면 반지름 감소
 

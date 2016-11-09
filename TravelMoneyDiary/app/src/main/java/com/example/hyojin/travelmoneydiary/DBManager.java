@@ -56,4 +56,22 @@ public class DBManager extends SQLiteOpenHelper {
             }
         }
     }
+
+    public int todayTotal (int todayDate) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM database", null);
+
+        int todayTotal = 0;
+
+        while (cursor.moveToNext()){
+            int date = cursor.getInt(cursor.getColumnIndex("date"));
+            int price = cursor.getInt(cursor.getColumnIndex("price"));
+
+            if (date == todayDate) {
+                todayTotal = todayTotal + price;
+            }
+        }
+
+        return todayTotal;
+    }
 }

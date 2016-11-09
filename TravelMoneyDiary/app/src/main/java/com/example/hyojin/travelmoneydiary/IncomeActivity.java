@@ -42,10 +42,10 @@ public class IncomeActivity extends AppCompatActivity {
         Button contrybtn = (Button)findViewById(R.id.incomeCountry);
         registerForContextMenu(contrybtn);
 
-
         ButtonExpense = (Button) findViewById(R.id.button_Expense);
         ButtonIncome = (Button) findViewById(R.id.button_Income);
         ButtonSave = (Button) findViewById(R.id.button_Save);
+
         TextView imcomedate = (TextView) findViewById(R.id.incomedate);
 
         String temp = imcomedate.getText().toString();
@@ -59,10 +59,15 @@ public class IncomeActivity extends AppCompatActivity {
 
         ButtonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
-                dbManager.insert(dateint, EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
-                Log.i("저장", "성공");
-                Toast.makeText(IncomeActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
-                clear();
+                if (EditTextContent.getText().toString().equals("") || EditTextPrice.getText().toString().equals("")) {
+                    Toast.makeText(IncomeActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
+                    clear();
+                } else {
+                    dbManager.insert(dateint, EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                    Log.i("저장", "성공");
+                    Toast.makeText(IncomeActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
+                    clear();
+                }
             }
         });
     }

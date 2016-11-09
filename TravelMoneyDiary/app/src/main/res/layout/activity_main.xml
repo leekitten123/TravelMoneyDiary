@@ -25,7 +25,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Today's Income : 0"
+                android:text="Today's Income : "
+                android:gravity="center"
+                android:textSize="40px"/>
+
+            <TextView
+                android:id="@+id/todayIncome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="40px"/>
 
@@ -33,7 +41,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Today's Expense : 0"
+                android:text="Today's Expense :"
+                android:gravity="center"
+                android:textSize="40px"/>
+
+            <TextView
+                android:id="@+id/todayExpense"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="center"
                 android:textSize="40px"/>
         </LinearLayout>
