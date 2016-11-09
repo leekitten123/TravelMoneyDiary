@@ -149,8 +149,12 @@ public class MainActivity extends AppCompatActivity {
         TextView excahngeafter = (TextView) findViewById(R.id.exchangeafter) ;
 
         String[] currencyUnit = {"Dollar", "Yen", "Euro", "Yuan", "Won" } ;
-
-        exchangebefore.setText("1 " + currencyUnit[numCountry]);
+        if(numCountry==1){
+            exchangebefore.setText("100" + currencyUnit[numCountry]);
+        }
+        else {
+            exchangebefore.setText("1 " + currencyUnit[numCountry]);
+        }
         excahngeafter.setText(String.valueOf(setMoneytoKorea(numCountry, 1)) + " Won");
     }
 
