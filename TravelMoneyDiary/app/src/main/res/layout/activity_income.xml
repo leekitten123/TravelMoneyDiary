@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
-    android:background="#008B8B"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <LinearLayout
@@ -16,9 +16,11 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:text="지출"
             android:textColor="#FFFFFF"
-            android:background="@color/colorPrimaryDark"
+            android:background="#6D929B"
             android:id="@+id/button_Expense"
             android:onClick="onClick_Expense"/>
 
@@ -26,36 +28,44 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textSize="30sp"
+            android:textStyle="bold"
             android:text="수입"
             android:textColor="#FFFFFF"
             android:id="@+id/button_Income"
-            android:background="@color/colorPrimary"/>
+            android:background="@drawable/button_border"/>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:orientation="vertical"
-        android:background="@color/colorPrimary">
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="#F5FAFA">
 
             <TextView
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:textSize="25sp"
-                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 android:text=" 날짜 : "/>
 
             <TextView
                 android:id="@+id/incomedate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 android:text=""
                 android:onClick="clickincomedate"
 
@@ -66,20 +76,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/text_border">
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:textSize="25sp"
-                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 android:text=" 내용 : "/>
 
             <EditText
                 android:id="@+id/editText_Content"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 android:enabled="true"
                 android:inputType="text" />
 
@@ -88,36 +105,48 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/text_border">
 
             <Button
                 android:id="@+id/incomeCountry"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:background="@drawable/krw"
+                android:layout_width="75dp"
+                android:layout_height="75dp"
+                android:gravity="center"
                 android:textSize="25sp"
-                android:textColor="#FFFFFF"
-                android:onClick="clickincomecountry"
-                android:text=" 국가 : "/>
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:onClick="clickincomecountry"/>
 
             <EditText
                 android:id="@+id/editText_Price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:enabled="true"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:textColor="#000000"
+                android:hint="금액을입력하세요"
                 android:inputType="number" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:background="@drawable/text_border">
 
             <TextView
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
                 android:textSize="25sp"
-                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:textColor="#000000"
                 android:text=" 한국 : "/>
 
             <TextView
@@ -139,7 +168,10 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:text="저장"
+            android:textSize="30sp"
             android:id="@+id/button_Save" />
 
     </LinearLayout>
