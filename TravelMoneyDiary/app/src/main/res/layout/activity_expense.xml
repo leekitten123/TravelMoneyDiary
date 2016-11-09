@@ -129,7 +129,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:hint="금액을 입력하세요"
+                android:hint="금액을입력하세요"
                 android:inputType="number" />
         </LinearLayout>
 
