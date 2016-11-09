@@ -1,0 +1,924 @@
+[33mcommit cdc2732f3af6d85251cefba607f8c2efde8a7bd5[m
+Author: taewoo <cow9404@naver.com>
+Date:   Wed Nov 9 13:57:28 2016 +0900
+
+    Modify income UI like expense UI
+
+[33mcommit 03e07876200f336614c826a1f3221c3adbfe418b[m
+Author: taewoo <cow9404@naver.com>
+Date:   Wed Nov 9 12:59:57 2016 +0900
+
+    Complete expense UI
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/657/
+
+[33mcommit bfb40e62d148852ae19af6317349a9818125586c[m
+Merge: fe84761 9b024f5
+Author: taewoo <cow9404@naver.com>
+Date:   Wed Nov 9 12:51:37 2016 +0900
+
+    Complete Conflicts
+
+[33mcommit fe84761fcac25b6edb80c1493da3f6f2cf01faac[m
+Author: taewoo <cow9404@naver.com>
+Date:   Wed Nov 9 12:39:50 2016 +0900
+
+    Change country button & use hint function
+
+[33mcommit a030c667fe448766407b9719dc6accab5ea2a844[m
+Merge: adb5b54 232f7fd
+Author: taewoo <cow9404@naver.com>
+Date:   Wed Nov 9 12:07:34 2016 +0900
+
+    Merge branch 'master' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 15-UI-expense
+
+[33mcommit 232f7fda3f45531f7500a8d31546bcac20afe3cb[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Wed Nov 9 10:47:30 2016 +0900
+
+    bug fixed. 컴퓨터에서의 달은 0~11, 사람이 보는 달은 1~12의 차이 때문에, 계속 month값을 1씩 더하고 빼주었는데 이 과정에서 조금 꼬여서 컴퓨터용 달과 사람이 보는용도의 달을 변수로 2개로 두어서 버그를 고쳤다.
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/655/
+
+[33mcommit 3d8bb80b6e999475b93795da024360074662b82f[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 8 23:29:56 2016 +0900
+
+    bug fixed
+    
+    지출내역 또는 수입내역을 저장할때 공백을 둔 상태로 저장버튼을 누르면
+    어플이 종료되는 현상 해결
+
+[33mcommit 68d8142914532be2739f34a611245a6ddfb97846[m
+Merge: 5a17e52 2f7c0a0
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 8 22:55:38 2016 +0900
+
+    show today's total income and expense when execute app.
+    
+    add function refresh today's expense and income when change date
+    
+    Merge branch '19-show-today-s-total-income-and-expense' No conflict
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/634/
+
+[33mcommit 5a17e52d05d210126dbfcc7c7d2d39dc82e06da9[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 21:37:40 2016 +0900
+
+    modifed README.md
+
+[33mcommit 5055c966401800bf96c62820f1d8bc424b64650b[m
+Merge: fe22592 1889f67
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 20:51:17 2016 +0900
+
+    add getDateFromCalendar in the Search Page
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/592/
+    
+    fixed bug. 날짜를 데이터피커로 받는것으로 변경하다가, 오늘날짜의 값만 받아지는것을 수정함.
+    
+    Merge branch '20-getdatefromcalendarinsearch' and fixed bug
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/627/
+
+[33mcommit 1889f679778ec10b172e23ad89cbac622a2c9ab2[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 20:23:51 2016 +0900
+
+    fixed bug. 날짜를 데이터피커로 받는것으로 변경하다가, 오늘날짜의 값만 받아지는것을 수정함.
+
+[33mcommit fe225927b78fd84b0d48d1110cf5a855ba556763[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 17:06:34 2016 +0900
+
+    add getDateFromCalendar in the Search Page
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/592/
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/593/
+
+[33mcommit 86800c0133322eb59a287a66b7fd1c8a6dbb58c0[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 17:06:34 2016 +0900
+
+    add getDateFromCalendar in the Search Page
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/592/
+
+[33mcommit 2f7c0a070fb0e7fc5c1428d0ffcbd95e2a3097d1[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 8 16:35:05 2016 +0900
+
+    add function refresh today's expense and income
+    when change date
+
+[33mcommit adb5b549ea7fb5886a944036b6fe62c2d8e84e69[m
+Author: taewoo <cow9404@naver.com>
+Date:   Tue Nov 8 15:17:32 2016 +0900
+
+    Modify UI-expense => change color / line up
+
+[33mcommit 9b024f55ecf623c1e9388976c760b352c23cacf9[m
+Author: taewoo <cow9404@naver.com>
+Date:   Tue Nov 8 15:17:32 2016 +0900
+
+    add calendar in the expense, income page. and add context menu
+    
+    add calendar in the expense, income page. and add context menu
+    
+    reviewboard
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/351/
+    
+    add calendar picker and backpressed
+    
+    show database in the search activity!!
+    
+    show database in the search activity!!
+    
+    layout size fixed, separate date to year, month, day
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/470/
+    
+    show income data in income.db file
+    
+    Add Library to Make Pie Graph in the Search_Page by LSW 2016.11.07.
+    
+    Merge remote-tracking branch 'origin/13-calendardata'
+    
+    Add a Expense Graph Excercise by LSW in 2016.11.07.
+    
+    add calendar in the expense, income page. and add context menu
+    
+    add calendar in the expense, income page. and add context menu
+    
+    reviewboard
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/351/
+    
+    add calendar picker and backpressed
+    
+    Merge remote-tracking branch 'origin/13-calendardata'
+    
+    merge 13branch
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/515/
+    
+    Success Making Expense_graph by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/518/
+    
+    input start day and end day show expense and income list according input value
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/530/
+    
+    .reviewboardrc modified
+    
+    Make Expense PieChart Perfect by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/538/
+    
+    Before Merge
+    
+    Merge branch '16-expense-graph'
+    
+    Add Library to Make Pie Graph in the Search_Page by LSW 2016.11.07.
+    
+    Add a Expense Graph Excercise by LSW in 2016.11.07.
+    
+    Success Making Expense_graph by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/518/
+    
+    Make Expense PieChart Perfect by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/538/
+    
+    Before Merge
+    
+    Merge branch '16-expense-graph'
+    
+    Merge '16-expense-graph' And Check It by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/539/
+    
+    show income data in income.db file
+    
+    input start day and end day show expense and income list according input value
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/530/
+    
+    .reviewboardrc modified
+    
+    Merge branch '17-search-income' Solve conflicts in 2016.11.08 Modify SearchActivity
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/566/
+    
+    Modify First time
+    
+    get date from calendar in incomeActivity
+    
+    Merge branch '18-income-graph' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 18-income-graph
+    
+    add how to use
+    
+    Make Income Pie Chart
+    
+    Modify First time
+    
+    get date from calendar in incomeActivity
+    
+    Merge branch '18-income-graph' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 18-income-graph
+    
+    Make Income Pie Chart
+    
+    Merge branch '18-income-graph'
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/579/
+    
+    Merge branch 'master' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 15-UI-expense
+    
+    Modify UI-expense - change color / line up
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/585/
+
+[33mcommit 68c179d6485e861c8f2807896fc087636e8df259[m
+Merge: 8ea1c85 fe4954b
+Author: taewoo <cow9404@naver.com>
+Date:   Tue Nov 8 15:02:58 2016 +0900
+
+    Merge branch 'master' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 15-UI-expense
+
+[33mcommit a113311dd9b1604a0c2f896abec4908b59ad9cc5[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 8 15:01:30 2016 +0900
+
+    show today's total income and expense when execute app.
+
+[33mcommit fe4954b89ccc3ec7a1377fcdb493e4fec25510dc[m
+Merge: a6c3b8f f75a9e8
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Tue Nov 8 13:48:14 2016 +0900
+
+    Modify First time
+    
+    get date from calendar in incomeActivity
+    
+    Merge branch '18-income-graph' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 18-income-graph
+    
+    Make Income Pie Chart
+    
+    Merge branch '18-income-graph'
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/579/
+
+[33mcommit f75a9e8195fc178e16464d59a5a22b17f9c46766[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Tue Nov 8 13:45:49 2016 +0900
+
+    Make Income Pie Chart
+
+[33mcommit a6c3b8f1a8653553ae784758396a55089dd534e2[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 13:13:26 2016 +0900
+
+    add how to use
+
+[33mcommit d88816fe446c7a3655fee4056a52c85a2d002d87[m
+Merge: 2223934 72aaab3
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 11:42:11 2016 +0900
+
+    Merge branch '18-income-graph' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior into 18-income-graph
+
+[33mcommit 222393468ecd830a0cd4ddebd7990bd95930d011[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 8 11:23:55 2016 +0900
+
+    get date from calendar in incomeActivity
+
+[33mcommit 72aaab31c0bf94b292353c3b85da75cab1a532fd[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Tue Nov 8 10:50:34 2016 +0900
+
+    Modify First time
+
+[33mcommit 6b6b189201a956f001abba5b8b9c551b8c6a7928[m
+Merge: ca02404 fbf7ea7
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 8 10:09:54 2016 +0900
+
+    show income data in income.db file
+    
+    input start day and end day show expense and income list according input value
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/530/
+    
+    .reviewboardrc modified
+    
+    Merge branch '17-search-income' Solve conflicts in 2016.11.08 Modify SearchActivity
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/566/
+
+[33mcommit ca02404169a9f2e7c27fe08cae3c4707e45fdc50[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 22:01:44 2016 +0900
+
+    Add Library to Make Pie Graph in the Search_Page by LSW 2016.11.07.
+    
+    Add a Expense Graph Excercise by LSW in 2016.11.07.
+    
+    Success Making Expense_graph by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/518/
+    
+    Make Expense PieChart Perfect by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/538/
+    
+    Before Merge
+    
+    Merge branch '16-expense-graph'
+    
+    Merge '16-expense-graph' And Check It by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/539/
+
+[33mcommit cef58ca767c06707dd3fc90f9690a6be12f1f261[m
+Merge: 63de577 8951eb9
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 21:54:21 2016 +0900
+
+    Merge branch '16-expense-graph'
+
+[33mcommit 63de57728ea05660a24062be3b12791b72ac1fd6[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 21:53:33 2016 +0900
+
+    Before Merge
+
+[33mcommit 8951eb92534d63806965538424392ef527a0691e[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 21:32:52 2016 +0900
+
+    Make Expense PieChart Perfect by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/538/
+
+[33mcommit fbf7ea72eb80f7d1087d863c2be01674cec56f2c[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Mon Nov 7 21:06:43 2016 +0900
+
+    .reviewboardrc modified
+
+[33mcommit 23fad6c6a93a1b14199e65f1def91c7a6e70a59a[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Mon Nov 7 20:55:30 2016 +0900
+
+    input start day and end day show expense and income list according input value
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/530/
+
+[33mcommit 491e0d8a858d93beca015bdf08ec1b8434eb6e7c[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 18:56:44 2016 +0900
+
+    Success Making Expense_graph by LSW 2016.11.07
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/518/
+
+[33mcommit ff7b07b49d4578d4220c5f9263588807970d859c[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Mon Nov 7 18:22:19 2016 +0900
+
+    add calendar in the expense, income page. and add context menu
+    
+    add calendar in the expense, income page. and add context menu
+    
+    reviewboard
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/351/
+    
+    add calendar picker and backpressed
+    
+    Merge remote-tracking branch 'origin/13-calendardata'
+    
+    merge 13branch
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/515/
+
+[33mcommit 16df85d014a1cf6636a166abae263e1c2ca16ac0[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 16:34:10 2016 +0900
+
+    Add a Expense Graph Excercise
+    by LSW in 2016.11.07.
+
+[33mcommit e134d92cb4804cad7bdf47381644bd420dce0cb2[m
+Merge: 828caad f38f215
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Mon Nov 7 16:02:45 2016 +0900
+
+    Merge remote-tracking branch 'origin/13-calendardata'
+
+[33mcommit 3f67e397eabed48b538f7253d93b7ec5c9494701[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Nov 7 01:52:51 2016 +0900
+
+    Add Library to Make Pie Graph in the Search_Page
+    by LSW 2016.11.07.
+
+[33mcommit 4f99ee13e8f3ddd08e07291c4ee1b603ab45fefb[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Sun Nov 6 23:52:11 2016 +0900
+
+    show income data in income.db file
+
+[33mcommit 828caad08967fc6f2b12dcb1fdc58b4abb7eb563[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Sun Nov 6 08:54:02 2016 +0900
+
+    show database in the search activity!!
+    
+    layout size fixed, separate date to year, month, day
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/470/
+
+[33mcommit 8ea1c85571af5b7a04a8738bfcea9b7f37ab830c[m
+Author: taewoo <cow9404@naver.com>
+Date:   Sun Nov 6 15:30:30 2016 +0900
+
+    start modify expense UI
+
+[33mcommit b3fc6c84549509369c1a8df2c7b532ca72513766[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Sat Nov 5 18:09:48 2016 +0900
+
+    show database in the search activity!!
+
+[33mcommit f47d75a0a9ff4f120e761670f191528c50c0ff28[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Sat Nov 5 16:37:20 2016 +0900
+
+    remove unless file
+
+[33mcommit a28357ff5fae951746facb0322c59c49af4fc4a2[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Sat Nov 5 16:32:28 2016 +0900
+
+    delete useless file
+
+[33mcommit b42c570824f98363a72a0b01f8564d241156ae91[m
+Merge: 28f29d4 59e9d67
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Fri Nov 4 19:28:34 2016 +0900
+
+    Merge branch '4-database-income'
+    Solve conflicts
+
+[33mcommit f38f215856e08783327c62bfaa8b77910a8f4091[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Nov 3 17:36:02 2016 +0900
+
+    add calendar picker and backpressed
+
+[33mcommit 6fdc10c8e3a26611fa9ef83c67d2228b8f408ab7[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Nov 3 17:19:19 2016 +0900
+
+    add calendar in the expense, income page. and add context menu
+    
+    reviewboard
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/351/
+
+[33mcommit db970fdaaa081d54ba99efd5ac9b63e7eca5556b[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Nov 3 17:14:49 2016 +0900
+
+    add calendar in the expense, income page. and add context menu
+
+[33mcommit 28f29d4a731f1890d73463fc6c26368366506056[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Nov 3 15:27:31 2016 +0900
+
+    .idea
+
+[33mcommit d09e7e814321a56db0d5f755e1578c8e725f7c3d[m
+Merge: fa5efe9 ac185d5
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Nov 3 15:22:35 2016 +0900
+
+    Merge branch 'master' of ssh://git.cs.kookmin.ac.kr:22001/2016-courses/there-is-senior
+
+[33mcommit fa5efe9b518ba39583115337a16452d95efde95f[m
+Merge: 8acdb6e 87d1d23
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Nov 3 15:22:03 2016 +0900
+
+    .idea
+
+[33mcommit ac185d58d433e5a025db12d370d5750fc929131e[m
+Merge: 87d1d23 0822ebc
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Thu Nov 3 13:33:36 2016 +0900
+
+    Merge branch '3-database-expense'
+    Solve conflict
+
+[33mcommit 0822ebc1fa4885ed5bf68541a0303c852e373a52[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Thu Nov 3 13:11:07 2016 +0900
+
+    Review!
+
+[33mcommit 87d1d233e07f844cec6ff3224f259f36ca43b490[m
+Merge: 32ad932 20c76ce
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 12:59:18 2016 +0900
+
+    Add Refresh Button by LSW 2016.10.31
+    
+    add Refrsh Button by LSW 2016.10.31
+    
+    add context menu and exchange image
+    
+    modified image files
+    
+    add krw
+    
+    Modify Refresh Button with Country by LSW in 2016.11.02
+    
+    Modify Refresh Button and ExchangeRate TextView by LSW in 2016.11.03
+    
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in Branch 6-exchange-rate (New)
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/319/
+    
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in Branch 6-exchange-rate (New)
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/319/
+    
+    For Code Review
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/327/
+    
+    Merge branch '6-exchange-rate'
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/331/
+
+[33mcommit 35548d177d1e84069d3dc88226f57d892e391cb4[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Thu Nov 3 12:54:32 2016 +0900
+
+    add clear method when click save button
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/329/
+
+[33mcommit 20c76cec2f1b65c33a69d9e0525b987338af8e0f[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 12:45:06 2016 +0900
+
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in Branch 6-exchange-rate (New)
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/319/
+    
+    For Code Review
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/327/
+
+[33mcommit 3512ba325b4ea1bb7a8a6d7ecef823b6ab17af5a[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 12:16:52 2016 +0900
+
+    Adding reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in branch 6-exchange-rate (New)
+    
+    Add reviewboardrc in Branch 6-exchange-rate
+    
+    Add reviewboardrc in Branch 6-exchange-rate (New)
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/319/
+
+[33mcommit 97bd1c068ff98a9b2c9917ca5b60d8c2a85cc777[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 12:12:25 2016 +0900
+
+    Add reviewboardrc in Branch 6-exchange-rate
+
+[33mcommit 847b017af472714f1e00ac472a30570fee2e24d6[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 12:09:49 2016 +0900
+
+    Add reviewboardrc in branch 6-exchange-rate (New)
+
+[33mcommit 47c7657cac3134a9257c69fda6d8f751c1dc1b23[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 12:06:28 2016 +0900
+
+    Adding reviewboardrc in Branch 6-exchange-rate
+
+[33mcommit 59e9d67c17ebe9c44435298732705d5791d1bc27[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Thu Nov 3 10:09:53 2016 +0900
+
+    add clear function when click Save Button
+
+[33mcommit 2be0536cd079eb887b9ec25303a436cd191f1dba[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Thu Nov 3 10:04:24 2016 +0900
+
+    add clear function when click Save Button
+
+[33mcommit 43eecbbff66f7394108dda06cc3dc952db93f088[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Thu Nov 3 01:38:19 2016 +0900
+
+    Modify Refresh Button and ExchangeRate TextView
+    by LSW in 2016.11.03
+
+[33mcommit a49d02ca1ce273e4a7874c1e3d731d508d034073[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Wed Nov 2 20:59:39 2016 +0900
+
+    Modify Refresh Button with Country
+    by LSW in 2016.11.02
+
+[33mcommit b737d6c88e0ca6dff36663183e2cdaeb406de4cd[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Wed Nov 2 20:41:41 2016 +0900
+
+    add krw
+
+[33mcommit 2728cda4d16ef128a2fe672fdac91efca026b8a2[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Wed Nov 2 20:37:46 2016 +0900
+
+    modified image files
+
+[33mcommit 995b11dbbf4b4953abbcbe39a3b6a4253e037a55[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Wed Nov 2 20:33:41 2016 +0900
+
+    add expense database, make table, and check db file complete!
+
+[33mcommit eff4d1e8141aab10fc7de647fab4474e7f82792d[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Wed Nov 2 20:24:33 2016 +0900
+
+    add income database, make table, and check db file complete!
+
+[33mcommit 7acf62fe253eb11563809d97a93ad5edb9ad3a65[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Wed Nov 2 19:51:39 2016 +0900
+
+    add context menu and exchange image
+
+[33mcommit b5a3eff5a8a276369a361415da03c7d2a1f9c873[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Wed Nov 2 14:28:54 2016 +0900
+
+    Save data in database complete!
+
+[33mcommit 8f9375d76d450a54da2c546f5d380929a1c146f0[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 1 21:58:20 2016 +0900
+
+    maybe database insert complete
+
+[33mcommit 571c9e93c6630703fa2d6bd5494e4dbf1a42596c[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 1 16:06:45 2016 +0900
+
+    Recommit
+
+[33mcommit 8acdb6e8f2f33f8fa61d10c9a419cb3c81172714[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 1 10:45:44 2016 +0900
+
+    change posting option to False
+
+[33mcommit 32ad932ffa71cbd562b987f6248c82f31583ad60[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Nov 1 10:20:46 2016 +0900
+
+    adding reviewboard configuration
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/198/
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/222/
+
+[33mcommit 743d1494eba0e1d6bbd8301d0102bd849ab848cd[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 1 10:28:41 2016 +0900
+
+    adding reviewboard configuration
+    
+    adding reviewboard configuration
+    
+    adding reviewboard configuration
+    
+    Reviewed at http://reviews.cs.kookmin.ac.kr/r/214/
+
+[33mcommit 6c119e5b65ff49f0c1ede92068a5348501646352[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 1 10:25:21 2016 +0900
+
+    adding reviewboard configuration
+
+[33mcommit 8e8d7c5d4b707fb8f2a3b5ccd8a04dcfaa8d4b46[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Nov 1 10:20:53 2016 +0900
+
+    adding reviewboard configuration
+
+[33mcommit 8d8b8f9b3e83b354f2a9b5d96e8fb01e9a7a6108[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Oct 31 20:45:27 2016 +0900
+
+    add Refrsh Button
+    by LSW 2016.10.31
+
+[33mcommit 37411a1cd33c4c6bc1b1c418b8c3e545f59f67d6[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Mon Oct 31 20:43:05 2016 +0900
+
+    Add Refresh Button
+    by LSW 2016.10.31
+
+[33mcommit 13070a06af338cf512899c24a208db40ef7e8d9b[m
+Author: Daeho Choi <khsrhhh@gmail.com>
+Date:   Mon Oct 31 16:58:28 2016 +0900
+
+    'ExpenseActivity.java' 추가
+
+[33mcommit 1a169467fe7e0dd1eae757ee729bb83f47aaec1c[m
+Author: Daeho Choi <khsrhhh@gmail.com>
+Date:   Mon Oct 31 15:18:14 2016 +0900
+
+    'ExpenseActivity.java' 주석 추가.
+
+[33mcommit 8ffc4aefca1bd58276cee1723f3ce135ced235ec[m
+Author: Daeho Choi <khsrhhh@gmail.com>
+Date:   Mon Oct 31 11:57:37 2016 +0900
+
+    database 작업 중...데이터 다 날라가서 다시 commit함 ㅡㅡ
+
+[33mcommit 0c2031a6062329f320b584afa15346b3f2666967[m
+Author: Daeho Choi <khsrhhh@gmail.com>
+Date:   Mon Oct 31 11:41:02 2016 +0900
+
+    example
+
+[33mcommit c4b60420ab1c577c16f58168df3d4b8142b16287[m
+Author: Daeho Choi <khsrhhh@gmail.com>
+Date:   Mon Oct 31 02:20:48 2016 +0900
+
+    조금만 자다 일어나서 다시 할게요. Database 저장, 조회 만드는 중..
+
+[33mcommit 9d1801aba60c6553071809271cfcdd7e0002db45[m
+Author: Daeho Choi <khsrhhh@gmail.com>
+Date:   Sat Oct 29 23:21:22 2016 +0900
+
+    저 시작할게요~>_<
+
+[33mcommit 2d2906ea3e421cc867d00041a6ba70d615f892c1[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Sat Oct 29 17:21:47 2016 +0900
+
+    Add Database
+
+[33mcommit 5145a544f7a4d8acd7f6b8c5b498ed82f2073992[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 03:30:26 2016 +0900
+
+    Add UI Acticity_search & Change Color
+    2016.10.29
+
+[33mcommit 0619a8ce7015ba3af84ae3f68860bba5848ada4b[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 02:19:54 2016 +0900
+
+    Change Message in README.md
+
+[33mcommit 9958a42dfb540c4f1598c8951f41e196a6aec3fe[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 02:15:27 2016 +0900
+
+    Add Expesnse & Income Page to Master Branch
+    done by LSW 2016.10.29
+
+[33mcommit f27de48a63ab5f47a25bd6ce5b102332d3561b39[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 00:58:49 2016 +0900
+
+    Remove Wasted File 01
+    remove once
+
+[33mcommit 4c51dd3f8d53f4fe8bff90f6668a433ecdf8e5b5[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 00:43:53 2016 +0900
+
+    Make Project Main
+    by branch 2-activity_main
+
+[33mcommit 032a033bdf79acd9f9aea7e64d3bfee4c8df8a1e[m
+Merge: 9af6fd5 bbc3b99
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 00:06:22 2016 +0900
+
+    Merge branch '8-activity_expense'
+
+[33mcommit 9af6fd5d41146ae86a696c485061c53929f24b1e[m
+Merge: c189af2 566ad98
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Sat Oct 29 00:01:43 2016 +0900
+
+    Merge branch '2-activity_main'
+
+[33mcommit bbc3b99624bd6e2f90e4db82e373fb9bb6b5e32e[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Fri Oct 28 22:04:48 2016 +0900
+
+    First Modified
+
+[33mcommit 566ad98ac41deaa79c192dc066cdf7da8e45f3fc[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Thu Oct 27 23:58:59 2016 +0900
+
+    AddParsingMyActivity
+
+[33mcommit cadde0c76ede133f0dce508e02765862f2d846f2[m
+Author: oh geun taek <rmsxor94@naver.com>
+Date:   Tue Oct 25 21:45:42 2016 +0900
+
+    Change MyActivity01
+
+[33mcommit 8a433d43d0fd5cedc4550f4056c3cc00e8a72211[m
+Author: Youngseok Ji <jiys5164@naver.com>
+Date:   Tue Oct 25 21:14:02 2016 +0900
+
+    ExpenseActivity 초안
+
+[33mcommit c189af2c107a748ba6c5232b5c928a553a641411[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Tue Oct 25 20:14:47 2016 +0900
+
+    Read Me
+
+[33mcommit 85b36e9e9c7d708c9d3067b9ef697d3c577d1c6e[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Tue Oct 25 19:25:11 2016 +0900
+
+    Activity_Main 01
+
+[33mcommit 7b695835a8b4422c81f699a481353c2f532b8d05[m
+Author: LEE SANGWOOK <leekitten123@hanmail.net>
+Date:   Mon Oct 24 15:17:02 2016 +0900
+
+    Delete README.ME
+
+[33mcommit 555d5071aa29d6038e902f88c056066cec014ec2[m
+Author: LeeSangWook <leekitten123@hanmail.net>
+Date:   Fri Oct 21 18:59:24 2016 +0900
+
+    README.ME

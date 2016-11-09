@@ -8,12 +8,7 @@ Choi Dae Ho
 Ji Young Seok
 Kim Tae Woo
 
-* add Main UI & Expense UI & Income UI by LSW 2016.10.29
-
-* add Search UI by LSW 2016.10.29 in 9-activity_search
-  and change color
-
-* add Refresh Button by LSW 2016.10.31 in 6-exchange-rate
+--------------------------------
 
 How to use
 환율이 받아져서 사용 할 수 있는 가계부 어플입니다.
