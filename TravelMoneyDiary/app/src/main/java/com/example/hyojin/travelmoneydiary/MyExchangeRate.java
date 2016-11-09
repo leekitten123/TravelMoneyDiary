@@ -90,4 +90,8 @@ public class MyExchangeRate {
 
         textView.setText(Integer.toString(afterMoney));
     }
+
+    int getAfterMoney() {
+        return afterMoney ;
+    }
 }

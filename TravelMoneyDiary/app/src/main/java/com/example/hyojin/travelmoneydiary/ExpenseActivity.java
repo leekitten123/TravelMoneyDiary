@@ -81,7 +81,7 @@ public class ExpenseActivity extends AppCompatActivity {
                     Toast.makeText(ExpenseActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
                     clear();
                 } else {
-                    dbManager.insert(dateint, EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                    dbManager.insert(dateint, EditTextContent.getText().toString(), mER.getAfterMoney());
                     Log.i("저장", "성공");
                     Toast.makeText(ExpenseActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
                     clear();
