@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        android:background="#008B8B"
+        android:textStyle="bold"
+        android:background="#F5FAFA"
         android:gravity="center"
         android:layout_weight="1">
 
@@ -17,6 +18,9 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="0.35"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="17dp"
             android:inputType="number"
             android:gravity="center"
             android:onClick="onclickstart"
@@ -28,7 +32,7 @@
             android:gravity="center"
             android:text=" ~ "
             android:textSize="5mm"
-            android:textColor="#FFFFFF"
+            android:textColor="#000000"
             android:id="@+id/textView" />
 
         <TextView
@@ -36,6 +40,9 @@
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:layout_weight="0.35"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textSize="17dp"
             android:inputType="number"
             android:gravity="center"
             android:onClick="onclickend"
@@ -45,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:textStyle="bold"
             android:text="조회"
             android:textSize="3mm"
             android:id="@+id/button_Search"
@@ -55,7 +63,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#ACD1E9"
         android:gravity="center"
         android:layout_weight="2">
 
@@ -68,7 +76,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimary"
+        android:background="#F5FAFA"
         android:gravity="center"
         android:layout_weight="2">
 
@@ -82,7 +90,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimaryDark"
+        android:background="#ACD1E9"
         android:gravity="center"
         android:layout_weight="2">
 
@@ -95,7 +103,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/colorPrimary"
+        android:background="#F5FAFA"
         android:gravity="center"
         android:layout_weight="2">
 
