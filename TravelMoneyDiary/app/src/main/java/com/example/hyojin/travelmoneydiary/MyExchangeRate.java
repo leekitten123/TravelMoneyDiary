@@ -8,15 +8,9 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-/**
- * Created by hyojin on 2016-11-09.
- */
-
 public class MyExchangeRate {
-
     int beforeMoney ;
     int afterMoney ;
-
 
     private static String Address;
     private static URL url;
