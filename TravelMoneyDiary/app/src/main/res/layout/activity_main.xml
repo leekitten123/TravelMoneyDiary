@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#008B8B"
+    android:background="#F5FAFA"
     android:padding="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimaryDark"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_weight="1">
+        android:background="#ACD1E9"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_weight="0.52">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -25,9 +26,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Today's Income : "
+                android:text="오늘의 수입 : "
                 android:gravity="center"
-                android:textSize="40px"/>
+                android:textStyle="bold"
+                android:textSize="50px"
+                android:id="@+id/textView6" />
 
             <TextView
                 android:id="@+id/todayIncome"
@@ -35,15 +38,17 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="40px"/>
+                android:textStyle="bold"
+                android:textSize="50px"/>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Today's Expense :"
+                android:text="오늘의 지출 :"
+                android:textStyle="bold"
                 android:gravity="center"
-                android:textSize="40px"/>
+                android:textSize="50px"/>
 
             <TextView
                 android:id="@+id/todayExpense"
@@ -51,18 +56,21 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:textSize="40px"/>
+                android:textStyle="bold"
+                android:textSize="50px"/>
         </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:text=""
             android:onClick="clickcalendar"
+            android:gravity="center"
             android:id="@+id/calendartv"
-            android:paddingTop="200px"
-            />
+            android:textStyle="bold"
+            android:textSize="50px"
+            android:drawableTop="@drawable/calendar"
+            android:layout_weight="0.32" />
 
     </LinearLayout>
 
@@ -70,29 +78,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:orientation="vertical"
-        android:background="@color/colorPrimary"
-        android:layout_weight="2">
+        android:background="#ACD1E9"
+        android:layout_weight="0.21">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_weight="1.73">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="309dp"
                 android:layout_height="match_parent"
-                android:layout_weight="6"
-                android:text="Today's Exchange Rate"
+                android:textStyle="bold"
+                android:textSize="60px"
+                android:text="오늘의 환율"
                 android:gravity="center"/>
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
                 android:layout_weight="1"
-                android:text="Refresh"
+                android:background="@drawable/refresh"
+                android:textSize="50sp"
+                android:textStyle="bold"
+                android:gravity="center"
                 android:onClick="onClick_Refresh"
                 />
         </LinearLayout>
@@ -101,10 +114,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
-                android:layout_width="150dp"
+                android:layout_width="190dp"
                 android:layout_height="75dp"
                 android:layout_weight="1"
                 android:id="@+id/chooseCountrybtn"
@@ -115,17 +129,26 @@
                 android:layout_width="match_parent"
                 android:layout_weight="2"
                 android:id="@+id/exchangebefore"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="50px"
                 android:text=""/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="50px"
                 android:text=" -> "/>
 
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
                 android:layout_weight="2"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:textSize="50px"
                 android:id="@+id/exchangeafter"/>
         </LinearLayout>
     </LinearLayout>
@@ -133,9 +156,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimaryDark"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="#F5FAFA"
         android:orientation="horizontal"
         android:layout_weight="1">
 
@@ -145,7 +168,9 @@
             android:id="@+id/BtnPageToWrite"
             android:onClick="onClick_Page"
             android:layout_weight="1"
-            android:text="Write"/>
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="입력"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -153,7 +178,9 @@
             android:id="@+id/BtnPageToSearch"
             android:onClick="onClick_Page"
             android:layout_weight="1"
-            android:text="Search"/>
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="조회"/>
 
     </LinearLayout>
 
@@ -168,6 +195,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@drawable/kmu"
             android:text="Goal amount of money graph"/>
 
     </LinearLayout>
