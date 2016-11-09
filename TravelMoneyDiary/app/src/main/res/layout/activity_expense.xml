@@ -122,7 +122,7 @@
 
             <EditText
                 android:id="@+id/editText_Price"
-                android:layout_width="match_parent"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:enabled="true"
                 android:gravity="center"
@@ -131,6 +131,14 @@
                 android:textColor="#000000"
                 android:hint="금액을입력하세요"
                 android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
         <LinearLayout
@@ -151,9 +159,17 @@
 
             <TextView
                 android:id="@+id/textView_Price"
-                android:layout_width="match_parent"
+                android:layout_width="260dp"
                 android:layout_height="match_parent"
-                android:textSize="25sp"/>
+                android:textSize="25sp"
+                android:gravity="center"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:text="원"
+                android:textSize="25sp"
+                android:textStyle="bold"/>
         </LinearLayout>
 
     </LinearLayout>

@@ -26,7 +26,7 @@ public class ExpenseActivity extends AppCompatActivity {
     int iDate;
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
-    TextView TextViewPrice;
+    TextView TextViewPrice, TextView;
 
     static int numCountry = 4;
     MyExchangeRate mER = new MyExchangeRate();
@@ -61,6 +61,7 @@ public class ExpenseActivity extends AppCompatActivity {
         EditTextContent = (EditText) findViewById(R.id.editText_Content);
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
+        TextView = (TextView) findViewById(R.id.textView5);
 
         EditTextPrice.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -142,26 +143,31 @@ public class ExpenseActivity extends AppCompatActivity {
             case 1:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
                 numCountry = 0;
+                TextView.setText("달러");
                 return true;
 
             case 2:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
                 numCountry = 1;
+                TextView.setText("엔");
                 return true;
 
             case 3:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
                 numCountry = 2;
+                TextView.setText("유로");
                 return true;
 
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
                 numCountry = 3;
+                TextView.setText("위안");
                 return true;
 
             case 5: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
                 numCountry = 4;
+                TextView.setText("원");
                 return true;
         }
 
