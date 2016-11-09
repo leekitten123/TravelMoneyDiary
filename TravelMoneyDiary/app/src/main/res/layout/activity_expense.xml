@@ -110,13 +110,13 @@
 
             <Button
                 android:id="@+id/expenseCountry"
+                android:background="@drawable/krw"
                 android:layout_width="75dp"
                 android:layout_height="75dp"
                 android:gravity="center"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:text="국가"
                 android:onClick="clickexpensecountry"
                 />
 
@@ -129,7 +129,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:text="금액을 입력하세요"
+                android:hint="금액을 입력하세요"
                 android:inputType="number" />
         </LinearLayout>
 
@@ -168,6 +168,8 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#000000"
             android:text="저장"
             android:textSize="30sp"
             android:id="@+id/button_Save" />

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.ContextMenu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -113,6 +114,35 @@ public class ExpenseActivity extends AppCompatActivity {
         menu.add(0, 3, 100, "유로");
         menu.add(0, 4, 100, "위안");
         menu.add(0, 5, 100, "한화");
+    }
+
+    public boolean onContextItemSelected (MenuItem item){
+        Button countrybtn = (Button)findViewById(R.id.expenseCountry);
+        // 롱클릭했을 때 나오는 context Menu 의 항목을 선택(클릭) 했을 때 호출
+
+        switch (item.getItemId()) {
+            case 1:// 달러
+                countrybtn.setBackgroundResource(R.drawable.dollor);
+                return true;
+
+            case 2:// 엔화
+                countrybtn.setBackgroundResource(R.drawable.jpy);
+                return true;
+
+            case 3:// 유로
+                countrybtn.setBackgroundResource(R.drawable.eur);
+                return true;
+
+            case 4:// 위안
+                countrybtn.setBackgroundResource(R.drawable.cny);
+                return true;
+
+            case 5: // 한국돈
+                countrybtn.setBackgroundResource(R.drawable.krw);
+                return true;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
 }
