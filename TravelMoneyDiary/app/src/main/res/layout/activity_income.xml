@@ -117,7 +117,7 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:textColor="#000000"
-                android:onClick="clickincomecountry"/>
+                android:onClick="onClick_Country"/>
 
             <EditText
                 android:id="@+id/editText_Price"

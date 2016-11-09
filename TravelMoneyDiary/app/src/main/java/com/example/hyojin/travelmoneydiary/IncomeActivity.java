@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -19,7 +21,6 @@ import java.util.Calendar;
 public class IncomeActivity extends AppCompatActivity {
 
     final DBManager dbManager = new DBManager(this, "income.db", null, 1);
-
     int iYear;
     int iMonth;
     int iDate;
@@ -27,6 +28,8 @@ public class IncomeActivity extends AppCompatActivity {
     EditText EditTextDate, EditTextContent, EditTextPrice;
     TextView TextViewPrice;
 
+    static int numCountry = 4;
+    MyExchangeRate mER = new MyExchangeRate();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,8 @@ public class IncomeActivity extends AppCompatActivity {
         Button contrybtn = (Button) findViewById(R.id.incomeCountry);
         registerForContextMenu(contrybtn);
 
+        mER.setExcahngeRate();
+
         ButtonExpense = (Button) findViewById(R.id.button_Expense);
         ButtonIncome = (Button) findViewById(R.id.button_Income);
         ButtonSave = (Button) findViewById(R.id.button_Save);
@@ -55,8 +60,20 @@ public class IncomeActivity extends AppCompatActivity {
 
         EditTextContent = (EditText) findViewById(R.id.editText_Content);
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
-
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
+
+        EditTextPrice.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            public void afterTextChanged(Editable arg0) {
+                // 입력이 끝났을 때
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
+            }
+        });
 
         ButtonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -64,7 +81,7 @@ public class IncomeActivity extends AppCompatActivity {
                     Toast.makeText(IncomeActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
                     clear();
                 } else {
-                    dbManager.insert(dateint, EditTextContent.getText().toString(), Integer.parseInt(EditTextPrice.getText().toString()));
+                    dbManager.insert(dateint, EditTextContent.getText().toString(), mER.getAfterMoney());
                     Log.i("저장", "성공");
                     Toast.makeText(IncomeActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
                     clear();
@@ -124,26 +141,35 @@ public class IncomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case 1:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
+                numCountry = 0 ;
                 return true;
 
             case 2:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
+                numCountry = 1 ;
                 return true;
 
             case 3:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
+                numCountry = 2 ;
                 return true;
 
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
+                numCountry = 3 ;
                 return true;
 
             case 5: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
+                numCountry = 4 ;
                 return true;
         }
 
         return super.onContextItemSelected(item);
     }
 
+    public void onClick_Country(View v) {
+        mER.setBeforeMoney(EditTextPrice);
+        mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
+    }
 }
