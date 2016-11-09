@@ -47,6 +47,8 @@ public class SearchActivity  extends AppCompatActivity {
     int iYeare;
     int iMonthe;
     int iDatee;
+    int cmonths;
+    int cmonthe;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,7 +76,8 @@ public class SearchActivity  extends AppCompatActivity {
         iYeare = today.get(Calendar.YEAR);                      //오늘의 년도를 받아서 iYear에 저장
         iMonthe = today.get(Calendar.MONTH) + 1;                //오늘의 달을 받아서 iMonth 저장 달은 0~11이므로 1을더함
         iDatee = today.get(Calendar.DAY_OF_MONTH);              //오늘의 일을 받아서 iDate에 저장
-
+        cmonths=iMonths-1;
+        cmonthe=iMonthe-1;
 
         TextView tvstart = (TextView) findViewById(R.id.editText_StartDay);   //xml에서 첫화면의 calendar부분의 객체를 받아옴
         TextView tvend = (TextView) findViewById(R.id.editText_EndDay);   //xml에서 첫화면의 calendar부분의 객체를 받아옴
@@ -95,8 +98,6 @@ public class SearchActivity  extends AppCompatActivity {
             public void onClick (View v) {
                 final int dateints = iYears*10000+(iMonths)*100+iDates;
                 final int dateinte = iYeare*10000+(iMonthe)*100+iDatee;
-                iMonthe-=1;
-                iMonths-=1;
                 if (dateints > dateinte) {
                     Toast.makeText(SearchActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
                 } else {
@@ -166,13 +167,15 @@ public class SearchActivity  extends AppCompatActivity {
                 caltv.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth + "일");           //선택한 년원일으로 caltv에 날짜를 적음
 
                 iYears = year;                 //이부분을 하지 않으면 클릭하여서 날짜를 바꾸면 그게 DatePickerDialog에 반영되지 않음
-                iMonths = monthOfYear-1;
+                iMonths = monthOfYear;
                 iDates = dayOfMonth;
+                cmonths=monthOfYear-1;
 
 
             }
         };
-        new DatePickerDialog(this, dateSetListener, iYears, iMonths, iDates).show();      //dateoicker를 보여줌
+        new DatePickerDialog(this, dateSetListener, iYears, cmonths, iDates).show();      //dateoicker를 보여줌
+
     }
     public void onclickend(View view) {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() { //datepicker
@@ -186,11 +189,12 @@ public class SearchActivity  extends AppCompatActivity {
                 caltv.setText(year + "년 " + monthOfYear + "월 " + dayOfMonth + "일");           //선택한 년원일으로 caltv에 날짜를 적음
 
                 iYeare = year;                 //이부분을 하지 않으면 클릭하여서 날짜를 바꾸면 그게 DatePickerDialog에 반영되지 않음
-                iMonthe = monthOfYear-1;
+                iMonthe = monthOfYear;
                 iDatee = dayOfMonth;
+                cmonthe=monthOfYear-1;
             }
         };
-        new DatePickerDialog(this, dateSetListener, iYeare, iMonthe, iDatee).show();      //dateoicker를 보여줌
+        new DatePickerDialog(this, dateSetListener, iYeare, cmonthe, iDatee).show();      //dateoicker를 보여줌
     }
 
 }
