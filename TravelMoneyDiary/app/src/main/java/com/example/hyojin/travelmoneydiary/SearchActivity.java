@@ -84,16 +84,6 @@ public class SearchActivity  extends AppCompatActivity {
         tvstart.setText(iYears + "년 " + iMonths + "월 " + iDates + "일");
         tvend.setText(iYeare + "년 " + iMonthe + "월 " + iDatee + "일");
 
-        final int dateinte = iYeare*10000+(iMonthe)*100+iDatee;
-        final int dateints = iYears*10000+(iMonths)*100+iDates;
-
-
-       // Log.i("date",String.valueOf(dateints));
-       // Log.i("date",String.valueOf(dateinte));
-
-        //iMonthe-=1;
-        //iMonths-=1;
-
         ButtonSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
                 final int dateints = iYears*10000+(iMonths)*100+iDates;
@@ -127,10 +117,6 @@ public class SearchActivity  extends AppCompatActivity {
                 income_MyPieChart.setChartName("Income Chart");
                 income_MyPieChart.setXYData(xData_Income, yData_Income);
                 income_MyPieChart.addData();
-
-                //iMonthe-=1;
-                //iMonths-=1;
-
             }
         });
     }

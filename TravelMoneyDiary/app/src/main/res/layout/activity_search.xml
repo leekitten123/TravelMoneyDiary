@@ -19,9 +19,9 @@
             android:layout_height="match_parent"
             android:layout_weight="0.35"
             android:textStyle="bold"
+            android:gravity="center"
             android:textSize="17dp"
             android:inputType="number"
-            android:gravity="center"
             android:onClick="onclickstart"
             />
 

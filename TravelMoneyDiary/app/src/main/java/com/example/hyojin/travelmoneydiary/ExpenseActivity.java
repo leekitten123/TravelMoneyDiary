@@ -25,7 +25,7 @@ public class ExpenseActivity extends AppCompatActivity {
     int iMonth;
     int iDate;
     Button ButtonExpense, ButtonIncome, ButtonSave;
-    EditText EditTextDate, EditTextContent, EditTextPrice;
+    EditText EditTextContent, EditTextPrice;
     TextView TextViewPrice, TextView;
 
     static int numCountry = 4;
@@ -52,12 +52,6 @@ public class ExpenseActivity extends AppCompatActivity {
         ButtonIncome = (Button) findViewById(R.id.button_Income);
         ButtonSave = (Button) findViewById(R.id.button_Save);
 
-        TextView etexpensedate = (TextView) findViewById(R.id.expensedate);
-
-        String temp = etexpensedate.getText().toString();
-
-        final int dateint = iYear * 10000 + (iMonth + 1) * 100 + iDate;
-
         EditTextContent = (EditText) findViewById(R.id.editText_Content);
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
@@ -78,11 +72,13 @@ public class ExpenseActivity extends AppCompatActivity {
 
         ButtonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                int convertDate = convertDate (iYear, iMonth, iDate);
+
                 if (EditTextContent.getText().toString().equals("") || EditTextPrice.getText().toString().equals("")) {
                     Toast.makeText(ExpenseActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
                     clear();
                 } else {
-                    dbManager.insert(dateint, EditTextContent.getText().toString(), mER.getAfterMoney());
+                    dbManager.insert(convertDate, EditTextContent.getText().toString(), mER.getAfterMoney());
                     Log.i("저장", "성공");
                     Toast.makeText(ExpenseActivity.this, "정상 입력 되었습니다.", Toast.LENGTH_SHORT).show();
                     clear();
@@ -98,7 +94,6 @@ public class ExpenseActivity extends AppCompatActivity {
     }
 
     void clear() {
-        //    EditTextDate.setText("");
         EditTextContent.setText("");
         EditTextPrice.setText("");
     }
@@ -177,6 +172,10 @@ public class ExpenseActivity extends AppCompatActivity {
     public void onClick_Country(View v) {
         mER.setBeforeMoney(EditTextPrice);
         mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
+    }
+
+    public int convertDate (int Year, int Month, int Day) {
+        return (Year*10000 + (Month+1)*100 + Day);
     }
 }
 
