@@ -20,12 +20,8 @@
             android:textStyle="bold"
             android:text="지출"
             android:textColor="#FFFFFF"
-<<<<<<< HEAD
-=======
             android:background="#6D929B"
->>>>>>> cdc2732f3af6d85251cefba607f8c2efde8a7bd5
             android:id="@+id/button_Expense"
-            android:background="#6D929B"
             android:onClick="onClick_Expense"/>
 
         <Button
@@ -53,7 +49,6 @@
             android:background="#F5FAFA">
 
             <TextView
-<<<<<<< HEAD
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -62,16 +57,7 @@
             android:textStyle="bold"
             android:textColor="#000000"
             android:text=" 날짜 : "/>
-=======
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="25sp"
-                android:textStyle="bold"
-                android:textColor="#000000"
-                android:text=" 날짜 : "/>
->>>>>>> cdc2732f3af6d85251cefba607f8c2efde8a7bd5
+
 
             <TextView
                 android:id="@+id/incomedate"
