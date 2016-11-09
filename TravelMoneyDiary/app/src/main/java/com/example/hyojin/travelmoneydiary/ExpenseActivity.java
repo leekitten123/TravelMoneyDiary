@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.ContextMenu;
 import android.view.MenuItem;
@@ -25,6 +27,8 @@ public class ExpenseActivity extends AppCompatActivity {
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextDate, EditTextContent, EditTextPrice;
     TextView TextViewPrice;
+
+    static int numCountry = 4 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +58,18 @@ public class ExpenseActivity extends AppCompatActivity {
 
         EditTextContent = (EditText) findViewById(R.id.editText_Content);
         EditTextPrice = (EditText) findViewById(R.id.editText_Price);
-
         TextViewPrice = (TextView) findViewById(R.id.textView_Price);
+
+        EditTextPrice.addTextChangedListener(new TextWatcher() {
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void afterTextChanged(Editable arg0) {
+                // 입력이 끝났을 때
+                MyExchangeRate mER = new MyExchangeRate() ;
+
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
+            }
+        });
 
         ButtonSave.setOnClickListener(new View.OnClickListener() {
             public void onClick (View v) {
@@ -123,28 +137,32 @@ public class ExpenseActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case 1:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
+                numCountry = 0 ;
                 return true;
 
             case 2:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
+                numCountry = 1 ;
                 return true;
 
             case 3:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
+                numCountry = 2 ;
                 return true;
 
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
+                numCountry = 4 ;
                 return true;
 
             case 5: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
+                numCountry = 4 ;
                 return true;
         }
 
         return super.onContextItemSelected(item);
     }
-
 }
 
 
