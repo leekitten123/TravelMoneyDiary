@@ -235,5 +235,11 @@ public class MainActivity extends AppCompatActivity {
         lastTimeBackPressed=System.currentTimeMillis();
     }
 
+    public void onClickCountryClick(View v){
+        Button countryBtn = (Button)findViewById(R.id.chooseCountrybtn);
+        registerForContextMenu(countryBtn);
+        openContextMenu(countryBtn);
+    }
+
 }
 
