@@ -177,4 +177,10 @@ public class IncomeActivity extends AppCompatActivity {
     public int convertDate (int Year, int Month, int Day) {
         return (Year*10000 + (Month+1)*100 + Day);
     }
+
+    public void onBackPressed(){
+        Intent intent_back = new Intent (getApplicationContext(), MainActivity.class);
+        startActivity(intent_back);
+        finish();
+    }
 }

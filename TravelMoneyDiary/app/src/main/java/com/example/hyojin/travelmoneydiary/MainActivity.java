@@ -135,11 +135,13 @@ public class MainActivity extends AppCompatActivity {
             case R.id.BtnPageToWrite:
                 Intent intentToWrite = new Intent(getApplicationContext(), ExpenseActivity.class) ;
                 startActivity(intentToWrite);
+                finish();
                 break;
 
             case R.id.BtnPageToSearch :
                 Intent intentToSearch = new Intent(getApplicationContext(), SearchActivity.class) ;
                 startActivity(intentToSearch);
+                finish();
                 break;
         }
     }
