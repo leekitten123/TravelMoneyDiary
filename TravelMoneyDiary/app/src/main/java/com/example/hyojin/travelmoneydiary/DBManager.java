@@ -74,4 +74,8 @@ public class DBManager extends SQLiteOpenHelper {
 
         return todayTotal;
     }
+
+    public void delete (int date, String content, int price) {
+        getReadableDatabase().execSQL("DELETE FROM database WHERE date = " + date + " AND content = '" + content + "' AND price = " + price);
+    }
 }

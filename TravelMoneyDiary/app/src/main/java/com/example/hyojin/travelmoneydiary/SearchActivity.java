@@ -1,11 +1,15 @@
 package com.example.hyojin.travelmoneydiary;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,6 +21,9 @@ import java.util.Calendar;
 
 public class SearchActivity  extends AppCompatActivity {
 
+    static final int YEAR_TO_CONVERTDATE = 10000;
+    static final int MONTH_TO_CONVERTDATE = 100;
+
     DBManager dbManager_expense = new DBManager(this, "expense.db", null, 1);
     DBManager dbManager_income = new DBManager(this, "income.db", null, 1);
     DBAdapter adapter_expense, adapter_income;
@@ -24,9 +31,9 @@ public class SearchActivity  extends AppCompatActivity {
     ArrayList<UsageList> ul_expense = new ArrayList<>();
     ArrayList<UsageList> ul_income = new ArrayList<>();
 
+    LinearLayout warningWindow;
     Button ButtonSearch;
     ListView ExpenseListView, IncomeListView;
-
     TextView StartDay, EndDay;
 
     String[] xData_Expense ;
@@ -97,11 +104,105 @@ public class SearchActivity  extends AppCompatActivity {
                     adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
                     ExpenseListView.setAdapter(adapter_expense);
 
+                    ExpenseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            final int deleteDate = ul_expense.get((int)id).date;
+                            final String deleteContent = ul_expense.get((int)id).content;
+                            final int deletePrice = ul_expense.get((int)id).price;
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SearchActivity.this);
+                            warningWindow = new LinearLayout(SearchActivity.this);
+                            warningWindow.setPadding(0, 0, 0, 0);
+
+                            builder
+                                    .setTitle("경고")
+                                    .setCancelable(false)
+                                    .setMessage(
+                                            "분류 : 지출" +
+                                                    "\n날짜 : " + deleteDate / YEAR_TO_CONVERTDATE + "년 " + (deleteDate % YEAR_TO_CONVERTDATE) / MONTH_TO_CONVERTDATE + "월 " + deleteDate % MONTH_TO_CONVERTDATE + "일" +
+                                                    "\n내용 : " + deleteContent +
+                                                    "\n가격 : " + deletePrice + "원" +
+                                                    "\n\n삭제한 데이터는 복구할 수 없습니다." +
+                                                    "\n정말 삭제하시겠습니까?")
+                                    .setView(warningWindow)
+                                    .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick (DialogInterface dialog, int which) {
+                                            dbManager_expense.delete(deleteDate, deleteContent, deletePrice);
+                                            ExpenseListView.setAdapter(adapter_expense);
+                                            Toast.makeText(SearchActivity.this, "삭제 완료", Toast.LENGTH_SHORT).show();
+
+                                            ul_expense.clear();
+
+                                            dbManager_expense.getResult(ul_expense,dateints,dateinte);
+                                            adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
+                                            ExpenseListView.setAdapter(adapter_expense);
+                                        }
+                                    })
+                                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick (DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                            builder.create();
+                            builder.show();
+                        }
+                    });
+
                     ul_income.clear();
 
                     dbManager_income.getResult(ul_income, dateints,dateinte);
                     adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
                     IncomeListView.setAdapter(adapter_income);
+
+                    IncomeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            final int deleteDate = ul_income.get((int)id).date;
+                            final String deleteContent = ul_income.get((int)id).content;
+                            final int deletePrice = ul_income.get((int)id).price;
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(SearchActivity.this);
+                            warningWindow = new LinearLayout(SearchActivity.this);
+                            warningWindow.setPadding(0, 0, 0, 0);
+
+                            builder
+                                    .setTitle("경고")
+                                    .setCancelable(false)
+                                    .setMessage(
+                                            "분류 : 수입" +
+                                                    "\n날짜 : " + deleteDate / YEAR_TO_CONVERTDATE + "년 " + (deleteDate % YEAR_TO_CONVERTDATE) / MONTH_TO_CONVERTDATE + "월 " + deleteDate % MONTH_TO_CONVERTDATE + "일" +
+                                                    "\n내용 : " + deleteContent +
+                                                    "\n가격 : " + deletePrice + "원" +
+                                                    "\n\n삭제한 데이터는 복구할 수 없습니다." +
+                                                    "\n정말 삭제하시겠습니까?")
+                                    .setView(warningWindow)
+                                    .setPositiveButton("삭제", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick (DialogInterface dialog, int which) {
+                                            dbManager_income.delete(deleteDate, deleteContent, deletePrice);
+                                            IncomeListView.setAdapter(adapter_income);
+                                            Toast.makeText(SearchActivity.this, "삭제 완료", Toast.LENGTH_SHORT).show();
+
+                                            ul_income.clear();
+
+                                            dbManager_income.getResult(ul_income,dateints,dateinte);
+                                            adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
+                                            IncomeListView.setAdapter(adapter_income);
+                                        }
+                                    })
+                                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick (DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                            builder.create();
+                            builder.show();
+                        }
+                    });
 
                     Toast.makeText(SearchActivity.this, "조회 완료", Toast.LENGTH_SHORT).show();
                 }
