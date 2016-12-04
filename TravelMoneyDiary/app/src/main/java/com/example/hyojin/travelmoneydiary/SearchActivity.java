@@ -99,10 +99,17 @@ public class SearchActivity  extends AppCompatActivity {
                     Toast.makeText(SearchActivity.this, "잘못된 입력이 있습니다.", Toast.LENGTH_SHORT).show();
                 } else {
                     ul_expense.clear();
-
                     dbManager_expense.getResult(ul_expense,dateints,dateinte);
                     adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
                     ExpenseListView.setAdapter(adapter_expense);
+
+                    ul_income.clear();
+                    dbManager_income.getResult(ul_income, dateints,dateinte);
+                    adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
+                    IncomeListView.setAdapter(adapter_income);
+
+                    showExpenseChart();
+                    showIncomeChart();
 
                     ExpenseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -134,10 +141,11 @@ public class SearchActivity  extends AppCompatActivity {
                                             Toast.makeText(SearchActivity.this, "삭제 완료", Toast.LENGTH_SHORT).show();
 
                                             ul_expense.clear();
-
                                             dbManager_expense.getResult(ul_expense,dateints,dateinte);
                                             adapter_expense = new DBAdapter(SearchActivity.this, ul_expense, R.layout.expense_row);
                                             ExpenseListView.setAdapter(adapter_expense);
+
+                                            showExpenseChart();
                                         }
                                     })
                                     .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -150,12 +158,6 @@ public class SearchActivity  extends AppCompatActivity {
                             builder.show();
                         }
                     });
-
-                    ul_income.clear();
-
-                    dbManager_income.getResult(ul_income, dateints,dateinte);
-                    adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
-                    IncomeListView.setAdapter(adapter_income);
 
                     IncomeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -187,10 +189,11 @@ public class SearchActivity  extends AppCompatActivity {
                                             Toast.makeText(SearchActivity.this, "삭제 완료", Toast.LENGTH_SHORT).show();
 
                                             ul_income.clear();
-
                                             dbManager_income.getResult(ul_income,dateints,dateinte);
                                             adapter_income = new DBAdapter(SearchActivity.this, ul_income, R.layout.income_row);
                                             IncomeListView.setAdapter(adapter_income);
+
+                                            showIncomeChart();
                                         }
                                     })
                                     .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -206,18 +209,6 @@ public class SearchActivity  extends AppCompatActivity {
 
                     Toast.makeText(SearchActivity.this, "조회 완료", Toast.LENGTH_SHORT).show();
                 }
-
-                xData_Expense = getXData(ul_expense);
-                yData_Expense = getYData(ul_expense) ;
-                expense_MyPieChart.setChartName("Expense Chart");
-                expense_MyPieChart.setXYData(xData_Expense, yData_Expense);
-                expense_MyPieChart.addData();
-
-                xData_Income = getXData(ul_income);
-                yData_Income = getYData(ul_income) ;
-                income_MyPieChart.setChartName("Income Chart");
-                income_MyPieChart.setXYData(xData_Income, yData_Income);
-                income_MyPieChart.addData();
             }
         });
     }
@@ -282,6 +273,22 @@ public class SearchActivity  extends AppCompatActivity {
             }
         };
         new DatePickerDialog(this, dateSetListener, iYeare, cmonthe, iDatee).show();      //dateoicker를 보여줌
+    }
+
+    public void showExpenseChart() {
+        xData_Expense = getXData(ul_expense);
+        yData_Expense = getYData(ul_expense);
+        expense_MyPieChart.setChartName("Expense Chart");
+        expense_MyPieChart.setXYData(xData_Expense, yData_Expense);
+        expense_MyPieChart.addData();
+    }
+
+    public void showIncomeChart() {
+        xData_Income = getXData(ul_income);
+        yData_Income = getYData(ul_income) ;
+        income_MyPieChart.setChartName("Income Chart");
+        income_MyPieChart.setXYData(xData_Income, yData_Income);
+        income_MyPieChart.addData();
     }
 
 }
