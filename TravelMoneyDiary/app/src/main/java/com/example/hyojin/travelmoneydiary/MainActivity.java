@@ -12,10 +12,13 @@ import android.widget.DatePicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.mikephil.charting.charts.BarChart;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity {
@@ -75,6 +78,11 @@ public class MainActivity extends AppCompatActivity {
 
         TodayIncome.setText(Integer.toString(todayIncome) + "원");
         TodayExpense.setText(Integer.toString(todayExpense) + "원");
+
+        ArrayList<UsageList> ulList = new ArrayList<>() ;
+        MyBarChart myBarChart = new MyBarChart((BarChart) findViewById(R.id.barChart));
+        dbManager_expense.getResult(ulList, Integer.parseInt(myBarChart.dataName[4]), Integer.parseInt(myBarChart.dataName[0]));
+        myBarChart.add(ulList);
     }
 
     public void webdata() throws Exception {            //하나은행에서 환율정보를 받아오는 메서드
