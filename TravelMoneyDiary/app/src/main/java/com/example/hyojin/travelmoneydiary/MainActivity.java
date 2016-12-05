@@ -32,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
     private long lastTimeBackPressed;
     static float[] rate_1 = new float[12] ; // 환율 받아서 저장_1
     static float[] rate_2 = new float[12] ; // 환율 받아서 저장_2
+    static final int RATE_USD = 1;
+    static final int RATE_JPY = 2;
+    static final int RATE_EUR = 3;
+    static final int RATE_CNY = 4;
+    static final int RATE_KRW = 5;
 
     DBManager dbManager_expense = new DBManager(this, "expense.db", null, 1);
     DBManager dbManager_income = new DBManager(this, "income.db", null, 1);
@@ -165,11 +170,12 @@ public class MainActivity extends AppCompatActivity {
         // 컨텍스트 메뉴가 최초로 한번만 호출되는 콜백 메서드
 
         menu.setHeaderTitle("Choose Country");
-        menu.add(0, 1, 100, "달러");
-        menu.add(0, 2, 100, "엔화");
-        menu.add(0, 3, 100, "유로");
-        menu.add(0, 4, 100, "위안");
-        menu.add(0, 5, 100, "한화");
+
+        String[] currencyUnit = {"달러", "엔", "유로", "위안", "원" } ;
+
+        for (int i = 1 ; i <= 5 ; i ++) {
+            menu.add(0, i, 100,currencyUnit[i-1]);
+        }
     }
 
     public boolean onContextItemSelected (MenuItem item){
@@ -177,37 +183,33 @@ public class MainActivity extends AppCompatActivity {
         // 롱클릭했을 때 나오는 context Menu 의 항목을 선택(클릭) 했을 때 호출
 
         switch (item.getItemId()) {
-            case 1:// 달러
+            case RATE_USD:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
                 numCountry = 0 ;
                 return true;
 
-            case 2:// 엔화
+            case RATE_JPY:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
                 numCountry = 1 ;
                 return true;
 
-            case 3:// 유로
+            case RATE_EUR:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
                 numCountry = 2 ;
                 return true;
 
-            case 4:// 위안
+            case RATE_CNY:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
                 numCountry = 3 ;
                 return true;
 
-            case 5: // 한국돈
+            case RATE_KRW: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
                 numCountry = 4 ;
                 return true;
         }
 
         return super.onContextItemSelected(item);
-    }
-
-    public void countryclick(View v){
-
     }
 
     public float setMoneytoKorea (int numCounrty, int money) {
