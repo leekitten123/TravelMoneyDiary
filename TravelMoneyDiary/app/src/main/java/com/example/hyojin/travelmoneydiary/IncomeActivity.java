@@ -59,6 +59,7 @@ public class IncomeActivity extends AppCompatActivity {
 
         EditTextPrice.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -139,30 +140,35 @@ public class IncomeActivity extends AppCompatActivity {
                 countrybtn.setBackgroundResource(R.drawable.dollor);
                 numCountry = 0 ;
                 TextView.setText("달러");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
             case 2:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
                 numCountry = 1 ;
                 TextView.setText("엔");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
             case 3:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
                 numCountry = 2 ;
                 TextView.setText("유로");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
             case 4:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
                 numCountry = 3 ;
                 TextView.setText("위안");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
             case 5: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
                 numCountry = 4 ;
                 TextView.setText("원");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
         }
 
@@ -170,6 +176,9 @@ public class IncomeActivity extends AppCompatActivity {
     }
 
     public void onClick_Country(View v) {
+        Button countryBtnIncome = (Button)findViewById(R.id.incomeCountry);
+        registerForContextMenu(countryBtnIncome);
+        openContextMenu(countryBtnIncome);
         mER.setBeforeMoney(EditTextPrice);
         mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
     }
