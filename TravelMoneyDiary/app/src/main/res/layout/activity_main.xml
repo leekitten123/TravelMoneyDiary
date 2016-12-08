@@ -128,7 +128,7 @@
                 android:layout_height="75dp"
                 android:layout_weight="1"
                 android:id="@+id/chooseCountrybtn"
-                android:onClick="countryclick"/>
+                android:onClick="onClickCountryClick"/>
 
             <TextView
                 android:layout_height="wrap_content"
@@ -192,18 +192,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:layout_height="200dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_weight="1">
 
-        <TextView
+        <com.github.mikephil.charting.charts.BarChart
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@drawable/kmu"
-            android:text="Goal amount of money graph"/>
-
+            android:id="@+id/barChart"/>
     </LinearLayout>
 
 </LinearLayout>

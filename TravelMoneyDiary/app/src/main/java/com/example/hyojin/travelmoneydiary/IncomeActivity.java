@@ -18,6 +18,12 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
+import static com.example.hyojin.travelmoneydiary.MainActivity.RATE_CNY;
+import static com.example.hyojin.travelmoneydiary.MainActivity.RATE_EUR;
+import static com.example.hyojin.travelmoneydiary.MainActivity.RATE_JPY;
+import static com.example.hyojin.travelmoneydiary.MainActivity.RATE_KRW;
+import static com.example.hyojin.travelmoneydiary.MainActivity.RATE_USD;
+
 public class IncomeActivity extends AppCompatActivity {
 
     final DBManager dbManager = new DBManager(this, "income.db", null, 1);
@@ -27,6 +33,7 @@ public class IncomeActivity extends AppCompatActivity {
     Button ButtonExpense, ButtonIncome, ButtonSave;
     EditText EditTextContent, EditTextPrice;
     TextView TextViewPrice, TextView;
+
 
     static int numCountry = 4;
     MyExchangeRate mER = new MyExchangeRate();
@@ -59,6 +66,7 @@ public class IncomeActivity extends AppCompatActivity {
 
         EditTextPrice.addTextChangedListener(new TextWatcher() {
             public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -123,11 +131,10 @@ public class IncomeActivity extends AppCompatActivity {
         // 컨텍스트 메뉴가 최초로 한번만 호출되는 콜백 메서드
 
         menu.setHeaderTitle("Choose Country");
-        menu.add(0, 1, 100, "달러");
-        menu.add(0, 2, 100, "엔화");
-        menu.add(0, 3, 100, "유로");
-        menu.add(0, 4, 100, "위안");
-        menu.add(0, 5, 100, "한화");
+        String[] currencyUnit = {"달러", "엔", "유로", "위안", "원" } ;
+        for (int i = 1 ; i <= 5 ; i ++) {
+            menu.add(0, i, 100,currencyUnit[i-1]);
+        }
     }
 
     public boolean onContextItemSelected(MenuItem item) {
@@ -135,34 +142,39 @@ public class IncomeActivity extends AppCompatActivity {
         // 롱클릭했을 때 나오는 context Menu 의 항목을 선택(클릭) 했을 때 호출
 
         switch (item.getItemId()) {
-            case 1:// 달러
+            case RATE_USD:// 달러
                 countrybtn.setBackgroundResource(R.drawable.dollor);
                 numCountry = 0 ;
                 TextView.setText("달러");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
-            case 2:// 엔화
+            case RATE_JPY:// 엔화
                 countrybtn.setBackgroundResource(R.drawable.jpy);
                 numCountry = 1 ;
                 TextView.setText("엔");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
-            case 3:// 유로
+            case RATE_EUR:// 유로
                 countrybtn.setBackgroundResource(R.drawable.eur);
                 numCountry = 2 ;
                 TextView.setText("유로");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
-            case 4:// 위안
+            case RATE_CNY:// 위안
                 countrybtn.setBackgroundResource(R.drawable.cny);
                 numCountry = 3 ;
                 TextView.setText("위안");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
 
-            case 5: // 한국돈
+            case RATE_KRW: // 한국돈
                 countrybtn.setBackgroundResource(R.drawable.krw);
                 numCountry = 4 ;
                 TextView.setText("원");
+                mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
                 return true;
         }
 
@@ -170,6 +182,9 @@ public class IncomeActivity extends AppCompatActivity {
     }
 
     public void onClick_Country(View v) {
+        Button countryBtnIncome = (Button)findViewById(R.id.incomeCountry);
+        registerForContextMenu(countryBtnIncome);
+        openContextMenu(countryBtnIncome);
         mER.setBeforeMoney(EditTextPrice);
         mER.seeAfterMoney(numCountry, EditTextPrice, TextViewPrice);
     }

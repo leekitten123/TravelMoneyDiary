@@ -221,24 +221,38 @@ public class SearchActivity  extends AppCompatActivity {
     }
 
     String[] getXData(ArrayList<UsageList> ul) {
-        String[] xData = new String[ul.size()];
-
+        ArrayList<String> stringArrayList = new ArrayList<>();
         for (int i = 0; i < ul.size(); i++) {
-            xData[i] = ul.get(i).content;
+            if (ul.get(i).price != 0) {
+                stringArrayList.add(ul.get(i).content);
+            }
+        }
+
+        String[] xData = new String[stringArrayList.size()];
+        for (int i = 0; i < stringArrayList.size(); i++) {
+            xData[i] = stringArrayList.get(i);
+
         }
 
         return xData ;
     }
 
     float[] getYData(ArrayList<UsageList> ul) {
-        float[] yData = new float[ul.size()];
-
+        ArrayList<Float> floatArrayList= new ArrayList<>();
         for (int i = 0; i < ul.size(); i++) {
-            yData[i] = ul.get(i).price;
+            if (ul.get(i).price != 0) {
+                floatArrayList.add((float) ul.get(i).price) ;
+            }
+        }
+
+        float[] yData = new float[floatArrayList.size()];
+        for (int i = 0; i < floatArrayList.size(); i++) {
+            yData[i] = floatArrayList.get(i);
         }
 
         return yData ;
     }
+
 
     public void onclickstart(View view) {
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() { //datepicker
