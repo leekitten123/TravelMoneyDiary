@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="조회"
+            android:text="��ȸ"
             android:textSize="3mm"
             android:id="@+id/button_Search"
             android:layout_weight="0.10" />
@@ -60,7 +60,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:background="#ACD1E9"
         android:gravity="center"
         android:layout_weight="2">
@@ -73,7 +73,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:background="#F5FAFA"
         android:gravity="center"
         android:layout_weight="2">
@@ -87,7 +87,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:background="#ACD1E9"
         android:gravity="center"
         android:layout_weight="2">
@@ -100,7 +100,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:background="#F5FAFA"
         android:gravity="center"
         android:layout_weight="2">
@@ -111,5 +111,18 @@
             android:layout_height="wrap_content">
         </ListView>
     </LinearLayout>
-</LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:gravity="center"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/textView_Gap"
+            android:gravity="center"/>
+
+    </LinearLayout>
+</LinearLayout>

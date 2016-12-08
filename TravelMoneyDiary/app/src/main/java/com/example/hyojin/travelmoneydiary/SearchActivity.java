@@ -34,7 +34,7 @@ public class SearchActivity  extends AppCompatActivity {
     LinearLayout warningWindow;
     Button ButtonSearch;
     ListView ExpenseListView, IncomeListView;
-    TextView StartDay, EndDay;
+    TextView StartDay, EndDay, Gap;
 
     String[] xData_Expense ;
     float[] yData_Expense ;
@@ -57,6 +57,8 @@ public class SearchActivity  extends AppCompatActivity {
     int cmonths;
     int cmonthe;
 
+    int totalExpense, totalIncome, gapBetweenExpenseAndIncome;;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +76,8 @@ public class SearchActivity  extends AppCompatActivity {
 
         income_Chart = (PieChart) findViewById(R.id.income_Chart) ;
         income_MyPieChart = new MyPieChart(income_Chart) ;
+
+        Gap = (TextView) findViewById(R.id.textView_Gap);
 
         Calendar today;                                        //오늘의 정보를 담을 Calendar객체
         today = Calendar.getInstance();                        //today에 객채의 정보 받아옴
@@ -110,6 +114,7 @@ public class SearchActivity  extends AppCompatActivity {
 
                     showExpenseChart();
                     showIncomeChart();
+                    showGapBetweenExpenseAndIncome(dateints, dateinte);
 
                     ExpenseListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
@@ -146,6 +151,7 @@ public class SearchActivity  extends AppCompatActivity {
                                             ExpenseListView.setAdapter(adapter_expense);
 
                                             showExpenseChart();
+                                            showGapBetweenExpenseAndIncome(dateints, dateinte);
                                         }
                                     })
                                     .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -194,6 +200,7 @@ public class SearchActivity  extends AppCompatActivity {
                                             IncomeListView.setAdapter(adapter_income);
 
                                             showIncomeChart();
+                                            showGapBetweenExpenseAndIncome(dateints, dateinte);
                                         }
                                     })
                                     .setNegativeButton("취소", new DialogInterface.OnClickListener() {
@@ -289,6 +296,17 @@ public class SearchActivity  extends AppCompatActivity {
         income_MyPieChart.setChartName("Income Chart");
         income_MyPieChart.setXYData(xData_Income, yData_Income);
         income_MyPieChart.addData();
+    }
+
+    public void showGapBetweenExpenseAndIncome(int startDay, int endDay) {
+        totalExpense = dbManager_expense.getTotal(startDay, endDay);
+        totalIncome = dbManager_income.getTotal(startDay, endDay);
+        gapBetweenExpenseAndIncome = totalIncome - totalExpense;
+        if (gapBetweenExpenseAndIncome > 0) {
+            Gap.setText(String.valueOf("총합계 : +" + gapBetweenExpenseAndIncome) + " 원");
+        } else if (gapBetweenExpenseAndIncome <= 0) {
+            Gap.setText(String.valueOf("총합계 : " + gapBetweenExpenseAndIncome) + " 원");
+        }
     }
 
 }

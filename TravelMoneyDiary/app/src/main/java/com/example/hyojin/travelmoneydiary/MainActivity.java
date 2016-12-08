@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     DBManager dbManager_expense = new DBManager(this, "expense.db", null, 1);
     DBManager dbManager_income = new DBManager(this, "income.db", null, 1);
 
-    TextView TodayIncome, TodayExpense;
+    TextView TodayIncome, TodayExpense, TodayTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,11 +70,20 @@ public class MainActivity extends AppCompatActivity {
 
         TodayIncome = (TextView) findViewById(R.id.todayIncome);
         TodayExpense = (TextView) findViewById(R.id.todayExpense);
+        TodayTotal = (TextView) findViewById (R.id.textView_Total);
         int todayIncome = dbManager_income.todayTotal(iYear*10000 + (iMonth+1)*100 + iDate);
         int todayExpense = dbManager_expense.todayTotal(iYear*10000 + (iMonth+1)*100 + iDate);
 
         TodayIncome.setText(Integer.toString(todayIncome) + "원");
         TodayExpense.setText(Integer.toString(todayExpense) + "원");
+
+        TodayIncome.setText(Integer.toString(todayIncome) + "원");
+        TodayExpense.setText(Integer.toString(todayExpense) + "원");
+        if (todayIncome - todayExpense > 0) {
+            TodayTotal.setText("오늘의 합계 : +" + String.valueOf(todayIncome - todayExpense) + "원");
+        } else if (todayIncome - todayExpense <= 0) {
+            TodayTotal.setText("오늘의 합계 : " + String.valueOf(todayIncome - todayExpense) + "원");
+        }
     }
 
     public void webdata() throws Exception {            //하나은행에서 환율정보를 받아오는 메서드
@@ -124,6 +133,12 @@ public class MainActivity extends AppCompatActivity {
 
                 TodayIncome.setText(Integer.toString(todayIncome) + "원");
                 TodayExpense.setText(Integer.toString(todayExpense) + "원");
+
+                if (todayIncome - todayExpense > 0) {
+                    TodayTotal.setText("오늘의 합계 : +" + String.valueOf(todayIncome - todayExpense) + "원");
+                } else if (todayIncome - todayExpense <= 0) {
+                    TodayTotal.setText("오늘의 합계 : " + String.valueOf(todayIncome - todayExpense) + "원");
+                }
             }
         };
 
@@ -238,4 +253,3 @@ public class MainActivity extends AppCompatActivity {
     }
 
 }
-

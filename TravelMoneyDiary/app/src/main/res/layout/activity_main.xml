@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:background="#ACD1E9"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_weight="0.52">
 
         <LinearLayout
@@ -74,10 +74,16 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_marginLeft="80dp"
+        android:text=""
+        android:id="@+id/textView_Total"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:orientation="vertical"
         android:background="#ACD1E9"

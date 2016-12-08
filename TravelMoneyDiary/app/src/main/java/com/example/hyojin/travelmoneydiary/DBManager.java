@@ -75,6 +75,24 @@ public class DBManager extends SQLiteOpenHelper {
         return todayTotal;
     }
 
+    public int getTotal (int startDay, int endDay) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT * FROM database", null);
+
+        int total = 0;
+
+        while (cursor.moveToNext()) {
+            int date = cursor.getInt(cursor.getColumnIndex("date"));
+            int price = cursor.getInt(cursor.getColumnIndex("price"));
+
+            if (date >= startDay && date <= endDay) {
+                total = total + price;
+            }
+        }
+
+        return total;
+    }
+
     public void delete (int date, String content, int price) {
         getReadableDatabase().execSQL("DELETE FROM database WHERE date = " + date + " AND content = '" + content + "' AND price = " + price);
     }
