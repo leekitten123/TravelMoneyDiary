@@ -13,7 +13,6 @@
         android:layout_height="wrap_content"
         android:background="#ACD1E9"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="10dp"
         android:layout_weight="0.52">
 
         <LinearLayout
@@ -74,12 +73,27 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:gravity="center_vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginLeft="80dp"
+        android:layout_marginRight="150dp"
         android:text=""
         android:id="@+id/textView_Total"/>
+        <Button
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/how"
+            android:id="@+id/HowTo"
+            android:onClick="HowTo"
+            />
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
