@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:textStyle="bold"
-            android:text="��ȸ"
+            android:text="조회"
             android:textSize="3mm"
             android:id="@+id/button_Search"
             android:layout_weight="0.10" />
